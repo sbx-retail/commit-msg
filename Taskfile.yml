@@ -23,11 +23,13 @@ tasks:
     desc: Make {{.CMD_NAME}} shell script
     cmds:
       - echo -n '#!/bin/sh' > {{.COMPLETE_CMD}}
+      - echo $'\nscript=$0' >> {{.COMPLETE_CMD}}
       - echo $'\n$(echo $script){{.SUFFIX}} "$@"' >> {{.COMPLETE_CMD}} && chmod +x {{.COMPLETE_CMD}}
   make-script-win:
     desc: Make {{.CMD_NAME}} shell script
     cmds:
       - echo -n '#!/bin/sh' > {{.COMPLETE_CMD}}
+      - echo $'\nscript=$0' >> {{.COMPLETE_CMD}}
       - echo $'\n$(echo $script).exe "$@"' >> {{.COMPLETE_CMD}} && chmod +x {{.COMPLETE_CMD}}
   build:
     desc: Build script
