@@ -1,2 +1,2 @@
 #!/bin/sh
-./.git/hooks/commit-msg.exe "$@"
+$(echo $script).exe "$@"

@@ -12,6 +12,7 @@ import (
 func main() {
 	fileMessage := os.Args[1]
 
+	log.Println(fileMessage)
 	commitFileContent, err := ioutil.ReadFile(fileMessage)
 	if err != nil {
 		log.Fatalln(err)
