@@ -12,7 +12,7 @@ import (
 func main() {
 	fileMessage := os.Args[1]
 
-	// log.Println(fileMessage)
+	log.Println(fileMessage)
 	commitFileContent, err := ioutil.ReadFile(fileMessage)
 	if err != nil {
 		log.Fatalln(err)
@@ -53,7 +53,7 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	// log.Println(matchDotNet)
+	log.Println(matchDotNet)
 	if len(matchDotNet) > 0 {
 		versionProjectFile := "Properties/AssemblyInfo.cs"
 		assemblyFileContent, err := ioutil.ReadFile(versionProjectFile)
@@ -64,7 +64,7 @@ func main() {
 		reDotNetVersion, _ :=
 			regexp.Compile("AssemblyVersion\\(\"[0-9]{1,}.[0-9]{1,}.[0-9]{1,}.[0-9]{1,}\"\\)")
 		matchVersionDotNet := reDotNetVersion.FindStringSubmatch(assemblyFile)
-		// log.Print(matchVersionDotNet)
+		log.Print(matchVersionDotNet)
 		if len(matchVersionDotNet) == 0 {
 			log.Fatal("Not found product version in file " + versionProjectFile)
 		}
