@@ -100,7 +100,7 @@ func main() {
 	versionPattern := "v" + version
 	version = "[" + versionPattern + "]"
 
-	log.Println(commitMessage)
+	//log.Println(commitMessage)
 	log.Println(version)
 	regEx, _ := regexp.Compile("\\[" + versionPattern + "\\]")
 	match := regEx.Match(commitFileContent)
