@@ -7,3 +7,7 @@ Commit message hook for SBX Retail projects
         - Click derecho en la pagina "Save as"/"Guardar como"
         - El nombre del archive debe dejarse como `commit-msg` (Ojo sin extesion)
 1. Copiar archivos descargados a la carpeta `.git/hooks` que se encuentra en raiz de cada uno de los proyectos de SBX Retail clonados.
+
+---
+Les dejo un vinculo con algo de ayuda para configuración avanzada, para "client hooks" globales:
+https://andy-carter.com/blog/automating-git-commit-messages-with-git-hooks
