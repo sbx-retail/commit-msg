@@ -109,5 +109,4 @@ func main() {
 		ioutil.WriteFile(fileMessage, []byte(commitMessage+" "+version), 0)
 	}
 	// os.Exit(42)
-
 }
