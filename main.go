@@ -97,12 +97,12 @@ func main() {
 		version = strings.ReplaceAll(matchVersionPackage[0], "\"version\": \"", "")
 		version = strings.ReplaceAll(version, "\"", "")
 	}
-
-	version = "[v" + version + "]"
+	versionPattern := "v" + version
+	version = "[" + versionPattern + "]"
 
 	log.Println(commitMessage)
 	log.Println(version)
-	regEx, _ := regexp.Compile(version)
+	regEx, _ := regexp.Compile("\\[" + versionPattern + "\\]")
 	match := regEx.Match(commitFileContent)
 
 	if !match {
