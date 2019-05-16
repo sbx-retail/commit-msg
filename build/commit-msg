@@ -1,4 +1,4 @@
 #!/bin/sh
 script=$0
 
-$(echo $script).exe "$@"
+$(echo $script).macos "$@"
