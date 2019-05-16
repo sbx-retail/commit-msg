@@ -12,7 +12,7 @@ import (
 func main() {
 	fileMessage := os.Args[1]
 
-	log.Println(fileMessage)
+	// log.Println(fileMessage)
 	commitFileContent, err := ioutil.ReadFile(fileMessage)
 	if err != nil {
 		log.Fatalln(err)
@@ -38,7 +38,7 @@ func main() {
 		reEmbarcaderoVersion, _ :=
 			regexp.Compile("ProductVersion=[0-9]{1,}.[0-9]{1,}.[0-9]{1,}.[0-9]{1,};")
 		matchVersionEmbarcadero := reEmbarcaderoVersion.FindStringSubmatch(embarcaderoFile)
-		log.Print(matchVersionEmbarcadero)
+		// log.Print(matchVersionEmbarcadero)
 		if len(matchVersionEmbarcadero) == 0 {
 			log.Fatal("Not found product version in file " + dprojFile)
 		}
@@ -64,7 +64,7 @@ func main() {
 		reDotNetVersion, _ :=
 			regexp.Compile("AssemblyVersion\\(\"[0-9]{1,}.[0-9]{1,}.[0-9]{1,}.[0-9]{1,}\"\\)")
 		matchVersionDotNet := reDotNetVersion.FindStringSubmatch(assemblyFile)
-		log.Print(matchVersionDotNet)
+		// log.Print(matchVersionDotNet)
 		if len(matchVersionDotNet) == 0 {
 			log.Fatal("Not found product version in file " + versionProjectFile)
 		}
@@ -78,7 +78,7 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	log.Println(matchNodeJS)
+	// log.Println(matchNodeJS)
 	if len(matchNodeJS) > 0 {
 		packageFilePath := matchNodeJS[0]
 		packageFileContent, err := ioutil.ReadFile(packageFilePath)
@@ -89,7 +89,7 @@ func main() {
 		rePackageVersion, _ :=
 			regexp.Compile("\"version\": \"[0-9]{1,}.[0-9]{1,}.[0-9]{1,}(.[0-9]{1,}|)\"")
 		matchVersionPackage := rePackageVersion.FindStringSubmatch(packageFile)
-		log.Print(matchVersionPackage)
+		// log.Print(matchVersionPackage)
 		if len(matchVersionPackage) == 0 {
 			log.Fatal("Not found product version in file " + packageFilePath)
 		}
