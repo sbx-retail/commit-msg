@@ -1,0 +1,1199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\SQLite.3.13.0\build\net45\SQLite.props" Condition="Exists('..\packages\SQLite.3.13.0\build\net45\SQLite.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{94F39A0B-414E-4E0A-8CEF-141E7FAC4FAA}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LinkService</RootNamespace>
+    <AssemblyName>LinkService</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommandLine, Version=2.4.3.0, Culture=neutral, PublicKeyToken=de6f01bd326f8c32, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommandLineParser.2.4.3\lib\netstandard2.0\CommandLine.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.3.4.1\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Core, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Core.3.4.1\lib\net40\Common.Logging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FirebirdSql.Data.FirebirdClient, Version=6.6.0.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL">
+      <HintPath>..\packages\FirebirdSql.Data.FirebirdClient.6.6.0\lib\net452\FirebirdSql.Data.FirebirdClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.SAPbobsCOM">
+      <HintPath>ThirtyParty\Interop.SAPbobsCOM.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.18.3, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.18.6.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Quartz, Version=2.6.2.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Quartz.2.6.2\lib\net40\Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="sapnco, Version=3.0.0.42, Culture=neutral, PublicKeyToken=50436dca5c7f7d23, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\SAP\SAP_DotNetConnector3_Net40_x86\sapnco.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="sapnco_utils, Version=3.0.0.42, Culture=neutral, PublicKeyToken=50436dca5c7f7d23, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\SAP\SAP_DotNetConnector3_Net40_x86\sapnco_utils.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SQLite.CodeFirst, Version=1.5.2.28, Culture=neutral, PublicKeyToken=eb96ba0a78d831a7, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLite.CodeFirst.1.5.2.28\lib\net45\SQLite.CodeFirst.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Console, Version=4.0.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Console.4.3.1\lib\net46\System.Console.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.110.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.110.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.110.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.110.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.110.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.110.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Linq, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.4.3.0\lib\net463\System.Linq.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Linq.Expressions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Expressions.4.3.0\lib\net463\System.Linq.Expressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Management">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Reflection, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.4.3.0\lib\net462\System.Reflection.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reflection.TypeExtensions, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.TypeExtensions.4.5.1\lib\net461\System.Reflection.TypeExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Extensions.4.3.1\lib\net462\System.Runtime.Extensions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.2\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="entitiesExtensions.cs" />
+    <Compile Include="Entities\Base\BaseEntity.cs" />
+    <Compile Include="Entities\Base\Interfaces\IBaseEntity.cs" />
+    <Compile Include="Entities\Base\LinkServiceDbContext.cs" />
+    <Compile Include="Entities\Migrate.cs" />
+    <Compile Include="Entities\SalesForceQueryHistory.cs" />
+    <Compile Include="Entities\Process.cs" />
+    <Compile Include="ERP\AdminPAQ\SDK.cs" />
+    <Compile Include="ERP\AdminPAQ\tMovimentoData.cs" />
+    <Compile Include="ERP\RunIt\IB_SQL.cs" />
+    <Compile Include="ERP\RunIt\InteractiveSQL.cs" />
+    <Compile Include="ERP\RunIt\Repository.cs" />
+    <Compile Include="ERP\SalesForce\SalesForceSDK.cs" />
+    <Compile Include="ERP\SAPR3_SDK\DestinationConfigurationSAPR3.cs" />
+    <Compile Include="ERP\SAPR3_SDK\extensions.cs" />
+    <Compile Include="ERP\SAPR3_SDK\SAPR3_SDK.cs" />
+    <Compile Include="ERP\TraceExtension.cs" />
+    <Compile Include="extensions.cs" />
+    <Compile Include="Forms\BaseFormChild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormPruebasAdminPAQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormPruebasAdminPAQ.Designer.cs">
+      <DependentUpon>FormPruebasAdminPAQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormPruebasSAPB1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormPruebasSAPB1.Designer.cs">
+      <DependentUpon>FormPruebasSAPB1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormSalesForce.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSalesForce.Designer.cs">
+      <DependentUpon>FormSalesForce.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormSAPR3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSAPR3.Designer.cs">
+      <DependentUpon>FormSAPR3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormTestSBXWebApi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormTestSBXWebApi.Designer.cs">
+      <DependentUpon>FormTestSBXWebApi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LinkService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LinkService.Designer.cs">
+      <DependentUpon>LinkService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LinkServiceGuardian.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LinkServiceGuardian.Designer.cs">
+      <DependentUpon>LinkServiceGuardian.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Processes\AdminPAQ\Base\ExceptionAdminPAQ.cs" />
+    <Compile Include="Processes\AdminPAQ\ExportSaleDocumentsProcess.cs" />
+    <Compile Include="Processes\AdminPAQ\extensions.cs" />
+    <Compile Include="Processes\AdminPAQ\ImportAddressesProcess.cs" />
+    <Compile Include="Processes\AdminPAQ\ImportItemsCombinationsProcess.cs" />
+    <Compile Include="Processes\AdminPAQ\ImportInventoriesOnHandProcess.cs" />
+    <Compile Include="Processes\AdminPAQ\ImportOptionsProcess.cs" />
+    <Compile Include="Processes\AdminPAQ\ImportPriceListsProcess.cs" />
+    <Compile Include="Processes\AdminPAQ\ImportSalePersonsProcess.cs" />
+    <Compile Include="Processes\AdminPAQ\ImportStoresProcess.cs" />
+    <Compile Include="Processes\AdminPAQ\ImportCustomersProcess.cs" />
+    <Compile Include="Processes\AdminPAQ\ImportCurrenciesProcess.cs" />
+    <Compile Include="Processes\AdminPAQ\ImportItemsProcess.cs" />
+    <Compile Include="Processes\AdminPAQ\Base\ProcessesManager.cs" />
+    <Compile Include="Processes\AspelSAE\Base\ExceptionAspelSAE.cs" />
+    <Compile Include="Processes\AspelSAE\Base\ProcessesManager.cs" />
+    <Compile Include="Processes\AspelSAE\ExportCustomersProcess.cs" />
+    <Compile Include="Processes\AspelSAE\ExportRegisterCloseOutsProcess.cs" />
+    <Compile Include="Processes\AspelSAE\ImportInventoryOnHandDetailOthersProcess.cs" />
+    <Compile Include="Processes\AspelSAE\ImportInventoryOnHandDetailSerialsProcess.cs" />
+    <Compile Include="Processes\AspelSAE\ImportTenderTypesProcess.cs" />
+    <Compile Include="Processes\AspelSAE\ImportItemsCombinationsProcess.cs" />
+    <Compile Include="Processes\AspelSAE\ImportItemsOptionsProcess.cs" />
+    <Compile Include="Processes\AspelSAE\ImportOptionsListsProcess.cs" />
+    <Compile Include="Processes\AspelSAE\ImportOptionsProcess.cs" />
+    <Compile Include="Processes\AspelSAE\ImportStoreItemsProcess.cs" />
+    <Compile Include="Processes\AspelSAE\ImportPriceListDetailsProcess.cs" />
+    <Compile Include="Processes\AspelSAE\ImportCustomersProcess.cs" />
+    <Compile Include="Processes\AspelSAE\ImportInventoriesOnHandProcess.cs" />
+    <Compile Include="Processes\AspelSAE\ImportStoresProcess.cs" />
+    <Compile Include="Processes\AspelSAE\ImportCurrenciesProcess.cs" />
+    <Compile Include="Processes\AspelSAE\ImportItemsProcess.cs" />
+    <Compile Include="Processes\AspelSAE\Subprocesses\ExportCFDiDocumentsByRegisterProcess.cs" />
+    <Compile Include="Processes\Base\Abstract\Exceptions\ExceptionLinkService.cs" />
+    <Compile Include="Processes\Base\Abstract\Interfaces\IProcessManager.cs" />
+    <Compile Include="Processes\Base\Abstract\Interfaces\IProcess.cs" />
+    <Compile Include="Processes\Base\Abstract\Interfaces\ISubprocess.cs" />
+    <Compile Include="Processes\Base\Abstract\MigrateData.cs" />
+    <Compile Include="Processes\Base\ExportCustomersProcess.cs" />
+    <Compile Include="Processes\Base\ExportInventoryDocumentsVoidTransfer.cs" />
+    <Compile Include="Processes\Base\ExportItemCombinationsProcess.cs" />
+    <Compile Include="Processes\Base\ExportInventoryOnHandProcess.cs" />
+    <Compile Include="Processes\Base\ExportLayawayDocumentsProcess.cs" />
+    <Compile Include="Processes\Base\ExportRegisterActivityProcess.cs" />
+    <Compile Include="Processes\Base\ExportTenderTypesProcess.cs" />
+    <Compile Include="Processes\Base\ExportStoreItemsProcess.cs" />
+    <Compile Include="Processes\Base\ExportWarehousesProcess.cs" />
+    <Compile Include="Processes\Base\ExportOptionsProcess.cs" />
+    <Compile Include="Processes\Base\ExportItemsProcess.cs" />
+    <Compile Include="Processes\Base\ExportInventoryDocumentsTransferOutProcess.cs" />
+    <Compile Include="Processes\Base\ExportInventoryDocumentsTransferInProcess.cs" />
+    <Compile Include="Processes\Base\ExportOnAccountPaymentsProcess.cs" />
+    <Compile Include="Processes\Base\ExportInventoryDocumentOrdersProcess.cs" />
+    <Compile Include="Processes\Base\ExportInventoryDocumentsProcess.cs" />
+    <Compile Include="Processes\Base\ExportCFDiDocumentsProcess.cs" />
+    <Compile Include="Processes\Base\ExportRegisterCloseOutsProcessGeneric.cs" />
+    <Compile Include="Processes\Base\ImportCustomerPicturesProcess.cs" />
+    <Compile Include="Processes\Base\ImportItemPicturesProcess.cs" />
+    <Compile Include="Processes\Base\ImportTestingProcess.cs" />
+    <Compile Include="Processes\Base\ImportInventoryOnHandDetailsProcess.cs" />
+    <Compile Include="Processes\Base\ImportItemBarcodesProcess.cs" />
+    <Compile Include="Processes\Base\ImportOptionListDetailsProcess.cs" />
+    <Compile Include="Processes\Base\ImportOptionDetailsProcess.cs" />
+    <Compile Include="Processes\Base\ImportSaleDocumentProcess.cs" />
+    <Compile Include="Processes\Base\ImportOffersProcess.cs" />
+    <Compile Include="Processes\Base\ImportFixedcategoriesProcess.cs" />
+    <Compile Include="Processes\Base\ImportInventoryDocumentOrdersProcess.cs" />
+    <Compile Include="Processes\Base\ImportInventoryDocumentsProcess.cs" />
+    <Compile Include="Processes\Base\ImportOptionsListsProcess.cs" />
+    <Compile Include="Processes\Base\ImportStoreCurrenciesProcess.cs" />
+    <Compile Include="Processes\Base\ImportStoreItemsProcess.cs" />
+    <Compile Include="Processes\Base\ImportTenderTypesProcess.cs" />
+    <Compile Include="Processes\Base\ImportVendorsProcess .cs" />
+    <Compile Include="Processes\Base\Subproceses\ExportCFDiDocumentsByRegisterProcess.cs" />
+    <Compile Include="Processes\Base\Subproceses\ExportSaleDocumentsByRegisterProcess.cs" />
+    <Compile Include="Processes\Base\ExportSaleDocumentsProcess.cs" />
+    <Compile Include="Processes\Base\ExportRegisterCloseOutsProcess.cs" />
+    <Compile Include="Processes\Base\Abstract\Interfaces\IExportProcess.cs" />
+    <Compile Include="Processes\Base\Abstract\Interfaces\IExportProcessGeneric.cs" />
+    <Compile Include="Processes\Base\Abstract\Interfaces\IImportProcessGeneric.cs" />
+    <Compile Include="Processes\Base\Abstract\Interfaces\IImportProcess.cs" />
+    <Compile Include="Processes\Base\ImportAddressesProcess.cs" />
+    <Compile Include="Processes\Base\ImportPriceListDetailsProcess.cs" />
+    <Compile Include="Processes\Base\ImportItemsOptionsProcess.cs" />
+    <Compile Include="Processes\Base\ImportItemsCombinationsProcess.cs" />
+    <Compile Include="Processes\Base\ImportInventoriesOnHandProcess.cs" />
+    <Compile Include="Processes\Base\ImportOptionsProcess.cs" />
+    <Compile Include="Processes\Base\ImportPriceListsProcess.cs" />
+    <Compile Include="Processes\Base\ImportUnitsProcess.cs" />
+    <Compile Include="Processes\Base\ImportUsersProcess.cs" />
+    <Compile Include="Processes\Base\ImportCustomersProcess.cs" />
+    <Compile Include="Processes\Base\Abstract\ExportProcess.cs" />
+    <Compile Include="Processes\Base\Abstract\ExportProcessGeneric.cs" />
+    <Compile Include="Processes\Base\ImportCurrenciesProcess.cs" />
+    <Compile Include="Processes\Base\ImportItemsProcessGeneric.cs" />
+    <Compile Include="Processes\Base\Abstract\ImportProcessGeneric.cs" />
+    <Compile Include="Processes\Base\Abstract\ImportProcess.cs" />
+    <Compile Include="Processes\Base\ImportStoresProcessGeneric.cs" />
+    <Compile Include="Processes\Base\ImportStoresProcess.cs" />
+    <Compile Include="Processes\Base\ImportItemsProcess.cs" />
+    <Compile Include="Processes\Base\Abstract\Exceptions\MarkProcessWebRequestException.cs" />
+    <Compile Include="Processes\eCommercePaviche\Base\ExceptioneCommercePaviche.cs" />
+    <Compile Include="Processes\eCommercePaviche\Base\ProcessesManager.cs" />
+    <Compile Include="Processes\eCommercePaviche\ExportTenderTypeProcess.cs" />
+    <Compile Include="Processes\eCommercePaviche\ExportItemCombinationsProcess.cs" />
+    <Compile Include="Processes\eCommercePaviche\ExportStoreItemsProcess.cs" />
+    <Compile Include="Processes\eCommercePaviche\ExportInventoryOnHandProcess.cs" />
+    <Compile Include="Processes\eCommercePaviche\ExportWarehousesProcess.cs" />
+    <Compile Include="Processes\eCommercePaviche\ExportOptionsProcess.cs" />
+    <Compile Include="Processes\eCommercePaviche\ExportItemsProcess.cs" />
+    <Compile Include="Processes\eCommercePaviche\ImportSaleDocumentsProcess.cs" />
+    <Compile Include="Processes\eCommercePaviche\ImportInventoryDocumentOrdersProcess.cs" />
+    <Compile Include="Processes\Emyco.RH\Base\ExceptionEmyco.cs" />
+    <Compile Include="Processes\Emyco.RH\Base\ProcessesManager.cs" />
+    <Compile Include="Processes\Emyco.RH\ImportUsersProcess.cs" />
+    <Compile Include="Processes\Emyco.RH\ImportCustomersProcess.cs" />
+    <Compile Include="Processes\Intelisis\Base\ExceptionIntelisis.cs" />
+    <Compile Include="Processes\Intelisis\Base\extensions.cs" />
+    <Compile Include="Processes\Intelisis\Base\ProcessesManager.cs" />
+    <Compile Include="Processes\Intelisis\ExportInventoryDocumentsVoidTransferProcess.cs" />
+    <Compile Include="Processes\Intelisis\ExportInventoryDocumentsTransferOutProcess.cs" />
+    <Compile Include="Processes\Intelisis\ExportInventoryDocumentsTransferInProcess.cs" />
+    <Compile Include="Processes\Intelisis\ImportInventoryDocumentOrdersProcess.cs" />
+    <Compile Include="Processes\RunIt\Base\ExceptionRunIt.cs" />
+    <Compile Include="Processes\RunIt\Base\extensions.cs" />
+    <Compile Include="Processes\RunIt\Base\ProcessesManager.cs" />
+    <Compile Include="Processes\RunIt\ExportCustomersProcess.cs" />
+    <Compile Include="Processes\RunIt\ExportInventoryDocumentsTransferProcess.cs" />
+    <Compile Include="Processes\RunIt\ExportRegisterActivitiesProcess.cs" />
+    <Compile Include="Processes\RunIt\ExportOnAccountPaymentsProcess.cs" />
+    <Compile Include="Processes\RunIt\ExportLayawayDocumentsProcess.cs" />
+    <Compile Include="Processes\RunIt\ExportSaleDocumentsProcess.cs" />
+    <Compile Include="Processes\RunIt\ImportCustomerPicturesProcess.cs" />
+    <Compile Include="Processes\RunIt\ImportItemPicturesProcess.cs" />
+    <Compile Include="Processes\RunIt\ImportTestingProcess.cs" />
+    <Compile Include="Processes\RunIt\ImportInventoryDocumentOrdersProcess.cs" />
+    <Compile Include="Processes\RunIt\ImportInventoriesOnHandProcess.cs" />
+    <Compile Include="Processes\RunIt\ImportPriceListDetailsProcess.cs" />
+    <Compile Include="Processes\RunIt\ImportCustomersProcess.cs" />
+    <Compile Include="Processes\RunIt\ImportUsersProcess.cs" />
+    <Compile Include="Processes\RunIt\ImportStoresProcess.cs" />
+    <Compile Include="Processes\RunIt\ImportItemAlternateBarcodesProcess.cs" />
+    <Compile Include="Processes\RunIt\ImportItemCombinationsProcess.cs" />
+    <Compile Include="Processes\RunIt\ImportOptionListDetailsProcess.cs" />
+    <Compile Include="Processes\RunIt\ImportOptionDetailsProcess.cs" />
+    <Compile Include="Processes\RunIt\ImportItemsProcess.cs" />
+    <Compile Include="Processes\SalesForce\Base\ExceptionSalesForce.cs" />
+    <Compile Include="Processes\SalesForce\Base\ProcessesManager.cs" />
+    <Compile Include="Processes\SalesForce\Connections.cs" />
+    <Compile Include="Processes\SalesForce\ExportCustomersProcess.cs" />
+    <Compile Include="Processes\SalesForce\extensions.cs" />
+    <Compile Include="Processes\SalesForce\ImportCustomersProcess.cs" />
+    <Compile Include="Processes\SAPB1\Base\ExceptionSAPB1.cs" />
+    <Compile Include="Processes\SAPB1\Base\ProcessesManager.cs" />
+    <Compile Include="Processes\SAPR3\Base\DestinationConfigurationSAPR3.cs" />
+    <Compile Include="Processes\SAPR3\Base\ExceptionSAPR3.cs" />
+    <Compile Include="Processes\SAPR3\Base\ProcessesManager.cs" />
+    <Compile Include="Processes\SAPR3\Connections.cs" />
+    <Compile Include="Processes\SAPR3\Emyco\Base\ExceptionSAPR3.cs" />
+    <Compile Include="Processes\SAPR3\Emyco\Base\ProcessesManager.cs" />
+    <Compile Include="Processes\SAPR3\Emyco\ExportInventoryDocumentsProcess.cs" />
+    <Compile Include="Processes\SAPR3\Emyco\ExportRegisterCloseOutsProcess.cs" />
+    <Compile Include="Processes\SAPR3\Emyco\Utils.cs" />
+    <Compile Include="Processes\SAPR3\Emyco\ImportCurrenciesProcess.cs" />
+    <Compile Include="Processes\SAPR3\Emyco\ImportInventoryDocumentOrdersProcess.cs" />
+    <Compile Include="Processes\SAPR3\Emyco\ImportInventoryDocumentsProcess.cs" />
+    <Compile Include="Processes\SAPR3\Emyco\ImportVendorsProcess.cs" />
+    <Compile Include="Processes\SAPR3\Emyco\ImportCustomersProcess.cs" />
+    <Compile Include="Processes\SAPR3\Emyco\ImportInventoriesOnHandProcess.cs" />
+    <Compile Include="Processes\SAPR3\Emyco\ImportPriceListDetailsProcess.cs" />
+    <Compile Include="Processes\SAPR3\Emyco\ImportItemsCombinationsProcess.cs" />
+    <Compile Include="Processes\SAPR3\Emyco\ImportItemsOptionsProcess.cs" />
+    <Compile Include="Processes\SAPR3\Emyco\ImportItemsProcess.cs" />
+    <Compile Include="Processes\SAPR3\Emyco\ImportPriceListsProcess.cs" />
+    <Compile Include="Processes\SAPR3\Emyco\ImportStoresProcess.cs" />
+    <Compile Include="Processes\SAPR3\Emyco\ImportUnitsProcess.cs" />
+    <Compile Include="Processes\SAPR3\Emyco\Subprocesses\ExportSaleDocumentsByRegisterProcess.cs" />
+    <Compile Include="Processes\SAPR3\ExportInventoryDocumentsProcess.cs" />
+    <Compile Include="Processes\SAPR3\ExportRegisterCloseOutsProcess.cs" />
+    <Compile Include="Processes\SAPR3\extensions.cs" />
+    <Compile Include="Processes\SAPR3\Emyco\ImportOptionsProcess.cs" />
+    <Compile Include="Processes\SAPR3\ImportCurrenciesProcess.cs" />
+    <Compile Include="Processes\SAPR3\ImportInventoryDocumentOrdersProcess.cs" />
+    <Compile Include="Processes\SAPR3\ImportInventoryDocumentsProcess.cs" />
+    <Compile Include="Processes\SAPR3\ImportVendorsProcess.cs" />
+    <Compile Include="Processes\SAPR3\ImportCustomersProcess.cs" />
+    <Compile Include="Processes\SAPR3\ImportInventoriesOnHandProcess.cs" />
+    <Compile Include="Processes\SAPR3\ImportPriceListDetailsProcess.cs" />
+    <Compile Include="Processes\SAPR3\ImportItemsOptionsProcess.cs" />
+    <Compile Include="Processes\SAPR3\ImportItemsCombinationsProcess.cs" />
+    <Compile Include="Processes\SAPR3\ImportItemsProcess.cs" />
+    <Compile Include="Processes\SAPR3\ImportOptionsProcess.cs" />
+    <Compile Include="Processes\SAPR3\ImportPriceListsProcess.cs" />
+    <Compile Include="Processes\SAPR3\ImportUnitsProcess.cs" />
+    <Compile Include="Processes\SAPR3\ImportStoresProcess.cs" />
+    <Compile Include="Processes\SAPR3\Subprocesses\ExportSaleDocumentsByRegisterProcess.cs" />
+    <Compile Include="Processes\Base\Abstract\Process.cs" />
+    <Compile Include="Processes\Base\Abstract\ProcessesManager.cs" />
+    <Compile Include="Processes\DolphinDiscover\ExportRegisterCloseOutsProcess.cs" />
+    <Compile Include="Processes\DolphinDiscover\ImportStoresProcess.cs" />
+    <Compile Include="Processes\DolphinDiscover\ImportItemsProcess.cs" />
+    <Compile Include="Processes\DolphinDiscover\ProcessesManager.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="LinkServiceInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LinkServiceInstaller.Designer.cs">
+      <DependentUpon>LinkServiceInstaller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ThirtyParty\ib_sql.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Migrates\AspelSAE\02_01_ImportItemsUpdate.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\00_00_ImportCurrencies.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\00_01_ImportCurrenciesUpdate.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\06_00_ImportStores.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\06_01_ImportStoresUpdate.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\05_01_ImportPriceListDetailsUpdate.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\05_00_ImportPriceListDetails.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\01_00_ImportCustomers.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\01_01_ImportCustomersUpdate.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\04_00_ImportInventoriesOnHand.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\04_01_ImportInventoriesOnHandUpdate.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\03_00_ImportOptions.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\03_01_ImportOptionsUpdate.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\03_02_ImportOptionsUpdate.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\07_01_ImportTenderTypesUpdate.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\07_00_ImportTenderTypes.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\08_00_00_ExportRegisterCloseOuts_LogTran.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\08_00_01_ExportRegisterCloseOuts_sp_OBTENER_CVEDOC.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\08_00_04_ExportRegisterCloseOuts_sp_CFDI_NUEVO.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\08_00_05_ExportRegisterCloseOuts_sp_CFDI_CANCELAR.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\08_01_00_ExportRegisterCloseOuts_sp_CABECERAF.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\08_01_01_ExportRegisterCloseOuts_sp_PARTIDASF.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\08_02_00_ExportRegisterCloseOuts_sp_CABECERAD.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\08_02_01_ExportRegisterCloseOuts_sp_PARTIDASD.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\08_03_00_ExportRegisterCloseOuts_sp_CABECERAR.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\08_03_01_ExportRegisterCloseOuts_sp_PARTIDASR.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\08_04_00_ExportRegisterCloseOuts_sp_CABECERA.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\08_04_01_ExportRegisterCloseOuts_sp_PARTIDAS.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\08_05_00_ExportRegisterCloseOuts_sp_COBRO.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\09_00_ExportCustomers.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\10_00_ImportInventoryOnHandDetailSerials.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\10_01_ImportInventoryOnHandDetailSerialsUpdate.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\11_01_ImportInventoryOnHandDetailOthersUpdate.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Migrates\AspelSAE\11_00_ImportInventoryOnHandDetailOthers.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="job_scheduling_data_2_0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Migrates\Intelisis\01_01_00_ExportInventoryDocumentsTransferOutProcessFunctionGetRenglonTipoByItemTypeName.MSSQL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\Intelisis\01_02_00_ExportInventoryDocumentsTransferOutProcessFunctionUserConf.MSSQL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\Intelisis\01_03_00_ExportInventoryDocumentsTransferOutProcessMaster.MSSQL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\Intelisis\01_04_00_ExportInventoryDocumentsTransferOutProcessDetails.MSSQL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\Intelisis\01_05_00_ExportInventoryDocumentsTransferOutProcessAfectarMvto.MSSQL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\Intelisis\01_00_00_ExportInventoryDocumentsTransferOutProcessExistOrCreateLogTransaction.MSSQL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\Intelisis\01_00_00_ExportInventoryDocumentsTransferOutProcessFunctionGetErrorMessage.MSSQL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\Intelisis\03_00_00_ExportInventoryDocumentsVoidTransferProcess.MSSQL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\Intelisis\02_00_00_ExportInventoryDocumentsTransferInProcess.MSSQL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\Intelisis\00_01_00_ImportInventoryDocumentOrdersProcess.MSSQL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\Intelisis\00_00_00_ImportInventoryDocumentOrdersProcess.MSSQL">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\06_04_ImportPriceListDetailsUpdate.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\10_01_ImportInventoryDocumentOrdersTriggers.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\10_01_ImportInventoryDocumentOrdersTriggers.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_0000_ExportSaleDocumentsCreateTables.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_0000_ExportSaleDocumentsCreateTables.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_0000_ExportSaleDocumentsCreateTables.ODBC.usage">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_0001_ExportSaleDocumentsAffectInvt.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_0001_ExportSaleDocumentsAffectInvt.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_0001_ExportSaleDocumentsAffectInvt.ODBC.usage">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_0001_ExportSaleDocumentsCloseBilllines.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_0001_ExportSaleDocumentsCloseBilllines.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_0001_ExportSaleDocumentsCloseBilllines.ODBC.usage">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_0001_ExportSaleDocumentsCreateOrExistBillLine.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_0001_ExportSaleDocumentsCreateOrExistBillLine.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_0001_ExportSaleDocumentsCreateOrExistBillLine.ODBC.usage">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_000_ExportSaleDocumentsCalcAverageCost.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_000_ExportSaleDocumentsCalcAverageCost.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_000_ExportSaleDocumentsCalcAverageCost.ODBC.usage">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_000_ExportSaleDocumentsCreateExcise.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_000_ExportSaleDocumentsCreateExcise.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_000_ExportSaleDocumentsCreateExcise.ODBC.usage">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_000_ExportSaleDocumentsCreateInvt.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_000_ExportSaleDocumentsCreateInvt.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_000_ExportSaleDocumentsCreateInvt.ODBC.usage">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_000_ExportSaleDocumentsCreateOrExistBillLineCreateTables.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_000_ExportSaleDocumentsCreateOrExistBillLineCreateTables.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_000_ExportSaleDocumentsCreateOrExistBillLineCreateTables.ODBC.usage">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_000_ExportSaleDocumentsGetInitial.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_000_ExportSaleDocumentsGetInitial.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_000_ExportSaleDocumentsGetInitial.ODBC.usage">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_000_ExportSaleDocumentsOnAccountPaymentsCreateTables.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_000_ExportSaleDocumentsOnAccountPaymentsCreateTables.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_000_ExportSaleDocumentsOnAccountPaymentsCreateTables.ODBC.usage">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_001_ExportSaleDocumentsCreateTableSBXLINK.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_001_ExportSaleDocumentsCreateTableSBXLINK.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_001_ExportSaleDocumentsCreateTableSBXLINK.ODBC.usage">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_01_ExportSaleDocumentsExistOrCreateSbxLink.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_01_ExportSaleDocumentsExistOrCreateSbxLink.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_01_ExportSaleDocumentsExistOrCreateSbxLink.ODBC.usage">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_02_ExportSaleDocumentsFunctions.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_02_ExportSaleDocumentsFunctions.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_02_ExportSaleDocumentsFunctions.ODBC.usage">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_03_ExportSaleDocumentsCreateExceptionEmptyPayments.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_03_ExportSaleDocumentsCreateExceptionEmptyPayments.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_03_ExportSaleDocumentsCreateExceptionEmptyPayments.ODBC.usage">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_06_00_ExportSaledocumentsRegisterActivityCreateTables.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_06_00_ExportSaledocumentsRegisterActivityEndProcess.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_06_00_ExportSaledocumentsRegisterActivityEndProcess.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_06_00_ExportSaledocumentsRegisterActivityEndProcess.ODBC.usage">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_06_00_ExportSaledocumentsRegisterActivityMaster.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_06_00_ExportSaledocumentsRegisterActivityMaster.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_06_01_ExportSaleDocumentsEndCloseOutProcess.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_06_01_ExportSaleDocumentsEndCloseOutProcess.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_06_01_ExportSaleDocumentsEndCloseOutProcess.ODBC.usage">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_06_02_ExportSaleDocumentsSalesmanEndProcess.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_06_02_ExportSaleDocumentsSalesmanEndProcess.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_06_02_ExportSaleDocumentsSalesmanEndProcess.ODBC.usage">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_06_ExportSaleDocumentsCancelProcess.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_06_ExportSaleDocumentsCancelProcess.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_06_ExportSaleDocumentsCancelProcess.ODBC.usage">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_06_ExportSaleDocumentsEndCustomerProcess.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_06_ExportSaleDocumentsEndCustomerProcess.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_06_ExportSaleDocumentsEndCustomerProcess.ODBC.usage">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_06_ExportSaleDocumentsEndProcess.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_08_ExportSaleDocumentsPayments.ODBC.usage">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\12_00_ExportInventoryDocumentsCreateFunctions.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\12_00_ExportInventoryDocumentsCreateFunctions.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\12_00_ExportInventoryDocumentsCreateFunctions.ODBC.usage">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\12_00_ExportInventoryDocumentsCreateTable.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\13_00_ExportCustomers.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\13_00_ExportCustomers.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\12_02_ExportInventoryDocumentsTransferEndProcess.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\12_02_ExportInventoryDocumentsTransferEndProcess.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\12_01_ExportInventoryDocumentsTransferDetail.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\12_01_ExportInventoryDocumentsTransferDetail.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\12_00_ExportInventoryDocumentsTransferHeader.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\12_00_ExportInventoryDocumentsTransferHeader.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_06_ExportSaleDocumentsEndProcess.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_08_ExportSaleDocumentsPayments.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_08_ExportSaleDocumentsPayments.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_05_ExportSaleDocumentsDetails.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_05_ExportSaleDocumentsDetails.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_04_ExportSaleDocumentsMaster.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\11_04_ExportSaleDocumentsMaster.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\10_04_ImportInventoryDocumentOrdersUpdate.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\10_03_ImportInventoryDocumentOrdersSPOrderDetail.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\10_03_ImportInventoryDocumentOrdersSPOrderDetail.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\10_02_ImportInventoryDocumentOrdersViewTransferOrders.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\10_02_ImportInventoryDocumentOrdersViewTransferOrders.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\10_00_ImportInventoryDocumentOrdersTableSBX.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\10_00_ImportInventoryDocumentOrdersTableSBX.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\09_02_ImportCustomersUpdate.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\09_01_ImportCustomersTriggers.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\09_01_ImportCustomersTriggers.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\09_00_ImportCustomersTableSBX.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\09_00_ImportCustomersTableSBX.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\08_02_ImportUsersUpdate.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\08_01_ImportUsersTriggers.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\08_01_ImportUsersTriggers.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\08_00_ImportUsersTableSBX.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\08_00_ImportUsersTableSBX.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\07_01_ImportInventoriesOnHandTriggersINVT.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\07_01_ImportInventoriesOnHandTriggersINVT.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\07_00_ImportInventoriesOnHandTableSBX.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\07_00_ImportInventoriesOnHandTableSBX.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\07_02_ImportInventoriesOnHandUpdate.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\06_01_ImportPriceListDetailsTriggersINVT.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\06_01_ImportPriceListDetailsTriggersINVT.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\06_00_ImportPriceListDetailsTableSBX.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\06_00_ImportPriceListDetailsTableSBX.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\05_02_ImportStoresUpdate.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\05_01_ImportStoresTriggers.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\05_01_ImportStoresTriggers.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\05_00_ImportStoresTableSBX.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\05_00_ImportStoresTableSBX.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\04_02_ImportItemAlternateBarcodesUpdate.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\04_01_ImportItemAlternateBarcodesTriggers.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\04_01_ImportItemAlternateBarcodesTriggers.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\04_00_ImportItemAlternateBarcodes.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\04_00_ImportItemAlternateBarcodes.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\03_01_ImportItemCombinationsTriggers.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\03_01_ImportItemCombinationsTriggers.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\03_00_ImportItemCombinations.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\03_00_ImportItemCombinations.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\02_00_ImportOptionListDetailsSP_OptionListDetails.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\02_00_ImportOptionListDetailsSP_OptionListDetails.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\01_05_ImportOptionDetailsUpdate.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\01_03_ImportOptionDetailsSPOptionDetails.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\01_03_ImportOptionDetailsSPOptionDetails.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\01_02_ImportOptionDetailsTriggersSizes.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\01_02_ImportOptionDetailsTriggersSizes.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\01_01_ImportOptionDetailsTriggersExts.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\01_01_ImportOptionDetailsTriggersExts.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\01_00_ImportOptionDetailsTableSBX.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\01_00_ImportOptionDetailsTableSBX.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\00_00_ImportItems.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\00_00_ImportItems.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\00_01_ImportItemsUpdate.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\03_02_ImportItemCombinationsUpdate.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\14_01_ExportOnAccountPaymentsMaster.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\14_01_ExportOnAccountPaymentsMaster.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\14_02_ExportOnAccountPaymentsDetail.ODBC">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Migrates\RunIt\14_02_ExportOnAccountPaymentsDetail.ODBC.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormPruebasAdminPAQ.resx">
+      <DependentUpon>FormPruebasAdminPAQ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormPruebasSAPB1.resx">
+      <DependentUpon>FormPruebasSAPB1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSalesForce.resx">
+      <DependentUpon>FormSalesForce.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSAPR3.resx">
+      <DependentUpon>FormSAPR3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormTestSBXWebApi.resx">
+      <DependentUpon>FormTestSBXWebApi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LinkServiceInstaller.resx">
+      <DependentUpon>LinkServiceInstaller.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Components.dotNet\Components.csproj">
+      <Project>{bcbb59f1-9223-4aaf-940d-94320ceb74a5}</Project>
+      <Name>Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Databases.dotNet\Databases.csproj">
+      <Project>{cc736882-28a5-4676-99c0-d8e3a84974b6}</Project>
+      <Name>Databases</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models.dotNet\SBX.Models.csproj">
+      <Project>{9828bd5d-40e2-4d14-bfb6-b575e08d809f}</Project>
+      <Name>SBX.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SBX.SDK\SBX.SDK.csproj">
+      <Project>{f3e1a9c8-a7e0-425c-bb08-7dfde936315d}</Project>
+      <Name>SBX.SDK</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Migrates\AspelSAE\02_00_ImportItems.FB">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="SAPbobsCOM">
+      <Guid>{FC8030BE-F5D2-4B8E-8F92-44228FE30090}</Guid>
+      <VersionMajor>9</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+    <Error Condition="!Exists('..\packages\SQLite.3.13.0\build\net45\SQLite.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLite.3.13.0\build\net45\SQLite.props'))" />
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.110.0\build\net46\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.110.0\build\net46\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.110.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.110.0\build\net46\System.Data.SQLite.Core.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

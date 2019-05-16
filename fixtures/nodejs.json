@@ -1,0 +1,45 @@
+{
+  "name": "sbx-schema-sync",
+  "version": "1.0.0",
+  "description": "Librería encargada de sincronizar el esquema de la base de datos de SBX Retail desde un XML (Archivo o string)",
+  "scripts": {
+    "test": "nyc --reporter=html --reporter=text ./node_modules/.bin/mocha --timeout 5000 --reporter min --require 'source-map-support/register' --require '@babel/register' 'lib/{,!(node_modules)/**/}*.test.js'",
+    "test-inspect": "nyc --reporter=html --reporter=text ./node_modules/.bin/mocha --timeout 5000 --require 'source-map-support/register' --require '@babel/register' --inspect 'lib/{,!(node_modules)/**/}*.test.js'",
+    "test-dev": "nodemon --watch ./lib --exec yarn test-inspect",
+    "test-show-all": "nyc --reporter=html --reporter=text ./node_modules/.bin/mocha --timeout 5000 --require 'source-map-support/register' --require '@babel/register' 'lib/{,!(node_modules)/**/}*.test.js'"
+  },
+  "main": "index.js",
+  "repository": "ssh://gitprocesos@gitolite.sbxretail.com:2277/sbx-retail/sbx-schema-sync.git",
+  "author": "Elbert Castañeda<elbert@sbxretail.com>",
+  "license": "PRIVATE",
+  "private": true,
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "knex": "^0.16.5",
+    "libxmljs": "^0.19.5",
+    "mssql": "^5.1.0",
+    "mysql2": "^1.6.5",
+    "pg": "^7.11.0",
+    "sqlite3": "^4.0.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/register": "^7.4.4",
+    "@babel/runtime": "^7.4.4",
+    "@types/knex": "^0.16.1",
+    "babel-eslint": "^10.0.1",
+    "chai": "^4.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "mocha": "^6.1.4",
+    "nodemon": "^1.19.0",
+    "nyc": "^14.1.0",
+    "source-map-support": "^0.5.12"
+  }
+}

@@ -1,0 +1,107 @@
+# https://taskfile.dev
+
+version: '2'
+
+vars:
+  CMD_NAME: commit-msg
+  SUFFIX: '{{if eq OS "windows"}}.win{{else}}{{if eq OS "darwin"}}.macos{{else}}.{{OS}}{{end}}{{end}}{{exeExt}}'
+  BUILD_PATH: ./build/
+  COMPLETE_CMD: '{{.BUILD_PATH}}{{.CMD_NAME}}'
+  COMPLETE_EXE: '{{.BUILD_PATH}}{{.CMD_NAME}}{{.SUFFIX}}'
+  COMPLETE_EXE_WIN: '{{.BUILD_PATH}}{{.CMD_NAME}}.exe'
+
+tasks:
+  default:
+    cmds:
+      - task: run
+  run:
+    desc: Run compiled script
+    cmds:
+      - task: build
+      - '{{.COMPLETE_EXE}} "World"'
+  make-script:
+    desc: Make {{.CMD_NAME}} shell script
+    cmds:
+      - echo -n '#!/bin/sh' > {{.COMPLETE_CMD}}
+      - echo $'\n./.git/hooks/{{.CMD_NAME}}{{.SUFFIX}} "$@"' >> {{.COMPLETE_CMD}} && chmod +x {{.COMPLETE_CMD}}
+  make-script-win:
+    desc: Make {{.CMD_NAME}} shell script
+    cmds:
+      - echo -n '#!/bin/sh' > {{.COMPLETE_CMD}}
+      - echo $'\n./.git/hooks/{{.CMD_NAME}}.exe "$@"' >> {{.COMPLETE_CMD}} && chmod +x {{.COMPLETE_CMD}}
+  build:
+    desc: Build script
+    cmds:
+      - go build -o {{.COMPLETE_EXE}}
+      - task: make-script
+  build-windows:
+    desc: Build windows script
+    cmds:
+      - GOOS=windows GOARCH=amd64 go build -o {{.COMPLETE_EXE_WIN}}
+      - task: make-script-win
+  build-n-copy-in-local:
+    desc: Build and copy in local
+    cmds:
+      - task: build
+      - cp -rf {{.COMPLETE_CMD}} .git/hooks/
+      - cp -rf {{.COMPLETE_EXE}} .git/hooks/
+  run-embarcadero:
+      desc: Test with embarcadero in real git environment
+      cmds:
+        - git add ./
+        - cmd: git commit -m "Auto commit to avoid lost changes"
+          ignore_error: true
+        - task: build-n-copy-in-local
+        - cp -rf fixtures/embarcadero.dproj ./
+        - git add ./
+        - git commit -m "Test commit"
+        - git reset HEAD~1 --hard
+  run-dotnet:
+      desc: Test with dot-net in real git environment
+      cmds:
+        - git add ./
+        - cmd: git commit -m "Auto commit to avoid lost changes"
+          ignore_error: true
+        - task: build-n-copy-in-local
+        - cp -rf fixtures/dotNetProject/* ./
+        - git add ./
+        - git commit -m "Test commit"
+        - git reset HEAD~1 --hard
+  run-nodejs:
+      desc: Test with nodejs in real git environment
+      cmds:
+        - git add ./
+        - cmd: git commit -m "Auto commit to avoid lost changes"
+          ignore_error: true
+        - task: build-n-copy-in-local
+        - cp -rf fixtures/nodejs.json ./package.json
+        - git add ./
+        - git commit -m "Test commit"
+        - git reset HEAD~1 --hard
+  test-embarcadero:
+    desc: Build and test embarcadero
+    cmds:
+      - cp -rf fixtures/embarcadero.dproj ./
+      - task: build
+      - echo $'First commit\n' > .git/COMMIT_EDITMSG
+      - '{{.COMPLETE_EXE}} .git/COMMIT_EDITMSG'
+      - cat .git/COMMIT_EDITMSG
+      - rm -Rf ./embarcadero.dproj
+  test-dotnet:
+    desc: Build and test dot-net
+    cmds:
+      - cp -rf fixtures/dotNetProject/* ./
+      - task: build
+      - echo $'First commit\n' > .git/COMMIT_EDITMSG
+      - '{{.COMPLETE_EXE}} .git/COMMIT_EDITMSG'
+      - cat .git/COMMIT_EDITMSG
+      - rm -Rf ./dotNet.csproj && rm -Rf ./Properties
+  test-nodejs:
+    desc: Build and test nodejs
+    cmds:
+      - cp -rf fixtures/nodejs.json ./package.json
+      - task: build
+      - echo $'First commit\n' > .git/COMMIT_EDITMSG
+      - '{{.COMPLETE_EXE}} .git/COMMIT_EDITMSG'
+      - cat .git/COMMIT_EDITMSG
+      - rm -Rf ./package.json

@@ -1,0 +1,1440 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{01655120-5418-40A9-8CB7-06AC7C32BDEC}</ProjectGuid>
+        <ProjectVersion>18.4</ProjectVersion>
+        <FrameworkType>VCL</FrameworkType>
+        <MainSource>Sync.SBX.ERP.POS.dpr</MainSource>
+        <Base>True</Base>
+        <Config Condition="'$(Config)'==''">Release</Config>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <TargetedPlatforms>1</TargetedPlatforms>
+        <AppType>Application</AppType>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+        <Base_Win32>true</Base_Win32>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
+        <Base_Win64>true</Base_Win64>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+        <Cfg_1>true</Cfg_1>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win32)'!=''">
+        <Cfg_1_Win32>true</Cfg_1_Win32>
+        <CfgParent>Cfg_1</CfgParent>
+        <Cfg_1>true</Cfg_1>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win64)'!=''">
+        <Cfg_1_Win64>true</Cfg_1_Win64>
+        <CfgParent>Cfg_1</CfgParent>
+        <Cfg_1>true</Cfg_1>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+        <Cfg_2>true</Cfg_2>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
+        <Cfg_2_Win32>true</Cfg_2_Win32>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win64)'!=''">
+        <Cfg_2_Win64>true</Cfg_2_Win64>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base)'!=''">
+        <DCC_Define>JCL;$(DCC_Define)</DCC_Define>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_MajorVer>3</VerInfo_MajorVer>
+        <Icon_MainIcon>Sync.SBX.ERP.POS.XE8_Icon.ico</Icon_MainIcon>
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <VerInfo_Locale>2058</VerInfo_Locale>
+        <VerInfo_Keys>CompanyName=Grupo Sync;FileDescription=Sync SBX ERP Point of Sale;FileVersion=3.3.0.66;InternalName=Point of Sale v2;LegalCopyright=© 2012-2019 Grupo Sync. Todos los derechos reservados.;LegalTrademarks=SBX ®;OriginalFilename=Sync.SBX.ERP.POS.exe;ProductName=Sync SBX ERP 2013;ProductVersion=3.3.0.66;Comments=</VerInfo_Keys>
+        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
+        <SanitizedProjectName>Sync_SBX_ERP_POS</SanitizedProjectName>
+        <DCC_DcuOutput>.\$(Platform)\$(Config)\dcu</DCC_DcuOutput>
+        <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
+        <DCC_E>false</DCC_E>
+        <DCC_N>false</DCC_N>
+        <DCC_S>false</DCC_S>
+        <DCC_F>false</DCC_F>
+        <DCC_K>false</DCC_K>
+        <VerInfo_MinorVer>3</VerInfo_MinorVer>
+        <VerInfo_Build>66</VerInfo_Build>
+        <DCC_UnitSearchPath>.\Controls;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
+        <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
+        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
+        <Icon_MainIcon>Sync.SBX.ERP.POS.ico</Icon_MainIcon>
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+        <DCC_UsePackage>dxPScxSchedulerLnkRS21;cxSchedulerRibbonStyleEventEditorRS21;cxSchedulerRS21;FireDACPgDriver;dxSkinOffice2007BlueRS21;cxTreeListdxBarPopupMenuRS21;dxSkinHighContrastRS21;cxPivotGridRS21;dxSkinSevenRS21;DBXInterBaseDriver;DataSnapServer;DataSnapCommon;cxEditorsRS21;DbxCommonDriver;vclimg;cxPivotGridOLAPRS21;dxTileControlRS21;dbxcds;dxPsPrVwAdvRS21;DatasnapConnectorsFreePascal;dxSkinSilverRS21;appanalytics;dxSkinMoneyTwinsRS21;fs22;vcldb;cxTreeListRS21;fsDB22;dxdborRS21;dxBarExtItemsRS21;dxWizardControlRS21;dxSkinBlueprintRS21;CustomIPTransport;dsnap;IndyIPServer;dxSkinOffice2010BlackRS21;IndyCore;dxSkinsdxBarPainterRS21;dxSkinValentineRS21;CloudService;dxSkinDevExpressStyleRS21;FmxTeeUI;FireDACIBDriver;dxSkinCaramelRS21;dxPScxPCProdRS21;dxSkinOffice2013DarkGrayRS21;dxDockingRS21;dxLayoutControlRS21;dsnapxml;FireDACDb2Driver;dxSkinscxSchedulerPainterRS21;dxPSLnksRS21;dxPSdxDBOCLnkRS21;dxSkinVS2010RS21;cxLibraryRS21;frx22;bindcompfmx;cxDataRS21;dxComnRS21;FireDACODBCDriver;RESTBackendComponents;dxSkinBlackRS21;dxSkinDarkSideRS21;dbrtl;FireDACCommon;bindcomp;inetdb;dxPScxTLLnkRS21;DBXOdbcDriver;ibmonitor;vclFireDAC;xmlrtl;ibxpress;cxExportRS21;FireDACCommonDriver;dxSkinOffice2007PinkRS21;dxFlowChartRS21;soaprtl;bindengine;vclactnband;FMXTee;bindcompvcl;cxPageControlRS21;dxCoreRS21;vclie;dxSkinOffice2007BlackRS21;dxPSCoreRS21;frxFD22;dxPSdxDBTVLnkRS21;dxPScxCommonRS21;dxADOServerModeRS21;FireDACMSSQLDriver;DBXInformixDriver;dxSkinLilianRS21;Intraweb;dxPSTeeChartRS21;DataSnapServerMidas;dxSkinWhiteprintRS21;dsnapcon;DBXFirebirdDriver;dxNavBarRS21;inet;dxRibbonRS21;dxSkinsdxNavBarPainterRS21;FireDACMySQLDriver;soapmidas;vclx;dxSkinOffice2013WhiteRS21;cxBarEditItemRS21;dxSkinsCoreRS21;DBXSybaseASADriver;dxFireDACServerModeRS21;dxSkinSharpPlusRS21;RESTComponents;dbexpress;dxSkinSevenClassicRS21;IndyIPClient;dxThemeRS21;frxADO22;FireDACTDataDriver;FireDACSqliteDriver;dxSkinBlueRS21;FireDACDSDriver;frxTee22;DBXSqliteDriver;dxSkinsdxDLPainterRS21;fmx;dxSkinMetropolisDarkRS21;cxVerticalGridRS21;IndySystem;dxSpreadSheetRS21;TeeDB;tethering;dxSkinMetropolisRS21;dxSkinGlassOceansRS21;vclib;dxSkinSummer2008RS21;DataSnapClient;dxPScxPivotGridLnkRS21;fsIBX22;DataSnapProviderClient;dxPSPrVwRibbonRS21;DBXSybaseASEDriver;frxe22;cxGridRS21;vcldsnap;dxSpellCheckerRS21;dxSkinLondonLiquidSkyRS21;dxSkinMcSkinRS21;dxSkinOffice2010SilverRS21;dxSkinOffice2007GreenRS21;fmxFireDAC;DBXDb2Driver;dxSkinFoggyRS21;DBXOracleDriver;vclribbon;dxtrmdRS21;fmxase;vcl;dxBarExtDBItemsRS21;dxGDIPlusRS21;DBXMSSQLDriver;IndyIPCommon;CodeSiteExpressPkg;dxPSDBTeeChartRS21;dxSkinOffice2007SilverRS21;DataSnapFireDAC;FireDACDBXDriver;dxPSdxSpreadSheetLnkRS21;dxSkinStardustRS21;soapserver;dxdbtrRS21;inetdbxpress;FireDACInfxDriver;dxPScxGridLnkRS21;dxPSdxFCLnkRS21;dxSkinCoffeeRS21;adortl;frxDBX22;FireDACASADriver;dxTabbedMDIRS21;emsclientfiredac;rtl;dxPSdxOCLnkRS21;DbxClientDriver;dxorgcRS21;dxPScxExtCommonRS21;dxSkinDarkRoomRS21;Tee;dxPSdxLCLnkRS21;dxMapControlRS21;frxIBX22;DataSnapNativeClient;svnui;dxSkinSpringTimeRS21;IndyProtocols;DBXMySQLDriver;cxPivotGridChartRS21;fsTee22;dxSkinOffice2013LightGrayRS21;dxSkinPumpkinRS21;bindcompdbx;TeeUI;cxSchedulerTreeBrowserRS21;dxmdsRS21;fsADO22;dxSkinDevExpressDarkStyleRS21;dxSkinSharpRS21;FireDACADSDriver;vcltouch;frxDB22;dxSkinscxPCPainterRS21;dxServerModeRS21;emsclient;dxSkinsdxRibbonPainterRS21;VclSmp;FireDAC;VCLRESTComponents;dxBarDBNavRS21;dxSkinTheAsphaltWorldRS21;dxSkinXmas2008BlueRS21;DataSnapConnectors;dxSkinLiquidSkyRS21;cxSchedulerGridRS21;fmxobj;dxPScxVGridLnkRS21;svn;dxBarRS21;FireDACOracleDriver;fmxdae;dxSkinOffice2010BlueRS21;FireDACMSAccDriver;DataSnapIndy10ServerTransport;dxSkiniMaginaryRS21;$(DCC_UsePackage)</DCC_UsePackage>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win64)'!=''">
+        <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
+        <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
+        <VerInfo_Build>1602</VerInfo_Build>
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
+        <VerInfo_Keys>CompanyName=Grupo Sync;FileDescription=Sync SBX ERP Point of Sale;FileVersion=1.0.3.1602;InternalName=Point of Sale v2;LegalCopyright=© 2012-2014 Grupo Sync. Todos los derechos reservados.;LegalTrademarks=SBX ®;OriginalFilename=Sync.SBX.ERP.POS.exe;ProductName=Sync SBX ERP 2013;ProductVersion=1.0.3.1602;Comments=Versión compilada en XE8</VerInfo_Keys>
+        <DCC_UsePackage>dxPScxSchedulerLnkRS21;cxSchedulerRibbonStyleEventEditorRS21;cxSchedulerRS21;FireDACPgDriver;dxSkinOffice2007BlueRS21;cxTreeListdxBarPopupMenuRS21;dxSkinHighContrastRS21;cxPivotGridRS21;dxSkinSevenRS21;DBXInterBaseDriver;DataSnapServer;DataSnapCommon;cxEditorsRS21;DbxCommonDriver;vclimg;cxPivotGridOLAPRS21;dxTileControlRS21;dbxcds;dxPsPrVwAdvRS21;DatasnapConnectorsFreePascal;dxSkinSilverRS21;appanalytics;dxSkinMoneyTwinsRS21;vcldb;cxTreeListRS21;dxdborRS21;dxBarExtItemsRS21;dxWizardControlRS21;dxSkinBlueprintRS21;CustomIPTransport;dsnap;IndyIPServer;dxSkinOffice2010BlackRS21;IndyCore;dxSkinsdxBarPainterRS21;dxSkinValentineRS21;CloudService;dxSkinDevExpressStyleRS21;FmxTeeUI;FireDACIBDriver;dxSkinCaramelRS21;dxPScxPCProdRS21;dxSkinOffice2013DarkGrayRS21;dxDockingRS21;dxLayoutControlRS21;dsnapxml;FireDACDb2Driver;dxSkinscxSchedulerPainterRS21;dxPSLnksRS21;dxPSdxDBOCLnkRS21;dxSkinVS2010RS21;cxLibraryRS21;bindcompfmx;cxDataRS21;dxComnRS21;FireDACODBCDriver;RESTBackendComponents;dxSkinBlackRS21;dxSkinDarkSideRS21;dbrtl;FireDACCommon;bindcomp;inetdb;dxPScxTLLnkRS21;DBXOdbcDriver;ibmonitor;vclFireDAC;xmlrtl;ibxpress;cxExportRS21;FireDACCommonDriver;dxSkinOffice2007PinkRS21;dxFlowChartRS21;soaprtl;bindengine;vclactnband;FMXTee;bindcompvcl;cxPageControlRS21;dxCoreRS21;vclie;dxSkinOffice2007BlackRS21;dxPSCoreRS21;dxPSdxDBTVLnkRS21;dxPScxCommonRS21;dxADOServerModeRS21;FireDACMSSQLDriver;DBXInformixDriver;dxSkinLilianRS21;Intraweb;dxPSTeeChartRS21;DataSnapServerMidas;dxSkinWhiteprintRS21;dsnapcon;DBXFirebirdDriver;dxNavBarRS21;inet;dxRibbonRS21;dxSkinsdxNavBarPainterRS21;FireDACMySQLDriver;soapmidas;vclx;dxSkinOffice2013WhiteRS21;cxBarEditItemRS21;dxSkinsCoreRS21;DBXSybaseASADriver;dxFireDACServerModeRS21;dxSkinSharpPlusRS21;RESTComponents;dbexpress;dxSkinSevenClassicRS21;IndyIPClient;dxThemeRS21;FireDACTDataDriver;FireDACSqliteDriver;dxSkinBlueRS21;FireDACDSDriver;DBXSqliteDriver;dxSkinsdxDLPainterRS21;fmx;dxSkinMetropolisDarkRS21;cxVerticalGridRS21;IndySystem;dxSpreadSheetRS21;TeeDB;tethering;dxSkinMetropolisRS21;dxSkinGlassOceansRS21;vclib;dxSkinSummer2008RS21;DataSnapClient;dxPScxPivotGridLnkRS21;DataSnapProviderClient;dxPSPrVwRibbonRS21;DBXSybaseASEDriver;cxGridRS21;vcldsnap;dxSpellCheckerRS21;dxSkinLondonLiquidSkyRS21;dxSkinMcSkinRS21;dxSkinOffice2010SilverRS21;dxSkinOffice2007GreenRS21;fmxFireDAC;DBXDb2Driver;dxSkinFoggyRS21;DBXOracleDriver;vclribbon;dxtrmdRS21;fmxase;vcl;dxBarExtDBItemsRS21;dxGDIPlusRS21;DBXMSSQLDriver;IndyIPCommon;dxPSDBTeeChartRS21;dxSkinOffice2007SilverRS21;DataSnapFireDAC;FireDACDBXDriver;dxPSdxSpreadSheetLnkRS21;dxSkinStardustRS21;soapserver;dxdbtrRS21;inetdbxpress;FireDACInfxDriver;dxPScxGridLnkRS21;dxPSdxFCLnkRS21;dxSkinCoffeeRS21;adortl;FireDACASADriver;dxTabbedMDIRS21;emsclientfiredac;rtl;dxPSdxOCLnkRS21;DbxClientDriver;dxorgcRS21;dxPScxExtCommonRS21;dxSkinDarkRoomRS21;Tee;dxPSdxLCLnkRS21;dxMapControlRS21;DataSnapNativeClient;dxSkinSpringTimeRS21;IndyProtocols;DBXMySQLDriver;cxPivotGridChartRS21;dxSkinOffice2013LightGrayRS21;dxSkinPumpkinRS21;bindcompdbx;TeeUI;cxSchedulerTreeBrowserRS21;dxmdsRS21;dxSkinDevExpressDarkStyleRS21;dxSkinSharpRS21;FireDACADSDriver;vcltouch;dxSkinscxPCPainterRS21;dxServerModeRS21;emsclient;dxSkinsdxRibbonPainterRS21;VclSmp;FireDAC;VCLRESTComponents;dxBarDBNavRS21;dxSkinTheAsphaltWorldRS21;dxSkinXmas2008BlueRS21;DataSnapConnectors;dxSkinLiquidSkyRS21;cxSchedulerGridRS21;fmxobj;dxPScxVGridLnkRS21;dxBarRS21;FireDACOracleDriver;fmxdae;dxSkinOffice2010BlueRS21;FireDACMSAccDriver;DataSnapIndy10ServerTransport;dxSkiniMaginaryRS21;$(DCC_UsePackage)</DCC_UsePackage>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1)'!=''">
+        <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+        <DCC_DebugDCUs>true</DCC_DebugDCUs>
+        <DCC_Optimize>false</DCC_Optimize>
+        <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+        <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+        <DCC_RemoteDebug>true</DCC_RemoteDebug>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <BT_BuildType>Debug</BT_BuildType>
+        <DCC_MapFile>3</DCC_MapFile>
+        <Debugger_DebugSourcePath>C:\Program Files (x86)\Embarcadero\Studio\17.0\Components\JCL\source\windows\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
+        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
+        <Icon_MainIcon>Sync.SBX.ERP.POS.ico</Icon_MainIcon>
+        <DCC_RemoteDebug>false</DCC_RemoteDebug>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
+        <VerInfo_Build>1603</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=Grupo Sync;FileDescription=Sync SBX ERP Point of Sale;FileVersion=1.0.3.1603;InternalName=Point of Sale v2;LegalCopyright=© 2012-2014 Grupo Sync. Todos los derechos reservados.;LegalTrademarks=SBX ®;OriginalFilename=Sync.SBX.ERP.POS.exe;ProductName=Sync SBX ERP 2013;ProductVersion=1.0.3.1603;Comments=Versión compilada en XE8</VerInfo_Keys>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2)'!=''">
+        <DCC_DebugDCUs>true</DCC_DebugDCUs>
+        <DCC_MapFile>3</DCC_MapFile>
+        <DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+        <BT_BuildType>Debug</BT_BuildType>
+        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
+        <Icon_MainIcon>Sync.SBX.ERP.POS.ico</Icon_MainIcon>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
+        <VerInfo_Keys>CompanyName=Grupo Sync;FileDescription=Sync SBX ERP Point of Sale;FileVersion=1.0.3.1603;InternalName=Point of Sale v2;LegalCopyright=© 2012-2014 Grupo Sync. Todos los derechos reservados.;LegalTrademarks=SBX ®;OriginalFilename=Sync.SBX.ERP.POS.exe;ProductName=Sync SBX ERP 2013;ProductVersion=1.0.3.1603;Comments=Versión compilada en XE8</VerInfo_Keys>
+    </PropertyGroup>
+    <ItemGroup>
+        <DelphiCompile Include="$(MainSource)">
+            <MainSource>MainSource</MainSource>
+        </DelphiCompile>
+        <DCCReference Include="Subtech\TDC_TLB.pas"/>
+        <DCCReference Include="MIT\MITEncrypt_TLB.pas"/>
+        <DCCReference Include="..\Common\Sync.Common.pas"/>
+        <DCCReference Include="..\common\Sync.Common.Vcl.pas"/>
+        <DCCReference Include="..\Common\Sync.Common.Messages.pas"/>
+        <DCCReference Include="..\Common\Sync.Common.ResourceStrings.pas"/>
+        <DCCReference Include="..\Common\Sync.Common.Xml.pas"/>
+        <DCCReference Include="..\Common\Sync.Common.Xml.Libxml2.pas"/>
+        <DCCReference Include="..\Common\Sync.Cryptography.pas"/>
+        <DCCReference Include="..\Common\Sync.FrxFunctions.pas"/>
+        <DCCReference Include="DigitalPersona\DigitalPersona.DPFPApi.pas"/>
+        <DCCReference Include="DigitalPersona\DigitalPersona.dpHFtrEx.pas"/>
+        <DCCReference Include="DigitalPersona\DigitalPersona.dpHMatch.pas"/>
+        <DCCReference Include="DigitalPersona\DigitalPersona.Impl.pas"/>
+        <DCCReference Include="DigitalPersona\DigitalPersona.Types.pas"/>
+        <DCCReference Include="MMMReader\MMM.OCR.MSR.Reader.Impl.pas"/>
+        <DCCReference Include="MMMReader\MMM.OCR.MSR.Reader.MMMReaderLowLevelAPI.pas"/>
+        <DCCReference Include="MMMReader\MMM.OCR.MSR.Reader.Types.pas"/>
+        <DCCReference Include="Sukarne\GM\Lang.pas"/>
+        <DCCReference Include="Sukarne\GM\WebControl.pas"/>
+        <DCCReference Include="Sukarne\GM\WebControlVCL.pas"/>
+        <DCCReference Include="Sukarne\GM\GMConstants.pas"/>
+        <DCCReference Include="Sukarne\GM\GMClasses.pas"/>
+        <DCCReference Include="Sukarne\GM\GMFunctions.pas"/>
+        <DCCReference Include="Sukarne\GM\GMFunctionsVCL.pas"/>
+        <DCCReference Include="Sukarne\GM\GMPolyline.pas"/>
+        <DCCReference Include="Sukarne\GM\GMPolylineVCL.pas"/>
+        <DCCReference Include="Sukarne\GM\GMRectangle.pas"/>
+        <DCCReference Include="Sukarne\GM\GMRectangleVCL.pas"/>
+        <DCCReference Include="Sukarne\GM\GMCircle.pas"/>
+        <DCCReference Include="Sukarne\GM\GMCircleVCL.pas"/>
+        <DCCReference Include="Sukarne\GM\GMDirection.pas"/>
+        <DCCReference Include="Sukarne\GM\GMGroundOverlay.pas"/>
+        <DCCReference Include="Sukarne\GM\GMLinkedComponents.pas"/>
+        <DCCReference Include="Sukarne\GM\GMPolygonVCL.pas"/>
+        <DCCReference Include="Sukarne\GM\GMMap.pas"/>
+        <DCCReference Include="Sukarne\GM\GMMapVCL.pas"/>
+        <DCCReference Include="Sukarne\GM\GMMarker.pas"/>
+        <DCCReference Include="Sukarne\GM\GMMarkerVCL.pas"/>
+        <DCCReference Include="Sync.SBX.ERP.POS.Init.pas"/>
+        <DCCReference Include="Sync.SBX.ERP.POS.General.pas"/>
+        <DCCReference Include="Panama\Sync.SBX.ERP.POS.Panama.pas"/>
+        <DCCReference Include="Paperless\Sync.SBX.ERP.POS.Paperless.pas"/>
+        <DCCReference Include="Cashless\Sync.SBX.ERP.POS.CashlessOperation.pas"/>
+        <DCCReference Include="Subtech\Sync.SBX.ERP.POS.Subtech.pas"/>
+        <DCCReference Include="LDI\Sync.SBX.ERP.POS.LDI.pas"/>
+        <DCCReference Include="LDAP\Sync.SBX.ERP.POS.LDAP.pas"/>
+        <DCCReference Include="Cinemas\Sync.SBX.ERP.POS.Cinemas.pas"/>
+        <DCCReference Include="MIT\Sync.SBX.ERP.POS.MIT.pas"/>
+        <DCCReference Include="CreditNotes\Sync.SBX.ERP.POS.DataModule.CreditNote.pas">
+            <Form>DataModuleCreditNote</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Customer\Sync.SBX.ERP.POS.DataModule.Customer.pas">
+            <Form>DataModuleCustomer</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Item\Sync.SBX.ERP.POS.DataModule.Item.pas">
+            <Form>DataModuleItem</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Layaway\Sync.SBX.ERP.POS.DataModule.Layaway.pas">
+            <Form>DataModuleLayaway</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Login\Sync.SBX.ERP.POS.DataModule.Login.pas">
+            <Form>DataModuleLogin</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Sync.SBX.ERP.POS.DataModule.Main.pas">
+            <Form>DataModuleMain</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Operations\Sync.SBX.ERP.POS.DataModule.Operation.pas">
+            <Form>DataModuleOperation</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Prepaid\Sync.SBX.ERP.POS.DataModule.Prepaid.pas">
+            <Form>DataModulePrepaid</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="PuntosNet\Sync.SBX.ERP.POS.DataModule.PuntosNet.pas">
+            <Form>DataModulePuntosNet</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Sync.SBX.ERP.POS.DataModule.Report.pas">
+            <Form>DataModuleReport</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Sale\Sync.SBX.ERP.POS.DataModule.Sale.pas">
+            <Form>DataModuleSale</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Salesman\Sync.SBX.ERP.POS.DataModule.Salesman.pas">
+            <Form>DataModuleSalesman</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="StockTransfer\Sync.SBX.ERP.POS.DataModule.StockTransfer.pas">
+            <Form>DataModuleStockTransfer</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="TimeClock\Sync.SBX.ERP.POS.DataModule.TimeClock.pas">
+            <Form>DataModuleTimeClock</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Inheritance\Sync.SBX.ERP.POS.FormBase.pas">
+            <Form>FormBase</Form>
+        </DCCReference>
+        <DCCReference Include="Sync.SBX.ERP.POS.FormMain.pas">
+            <Form>FormMainPOSv2</Form>
+        </DCCReference>
+        <DCCReference Include="Inheritance\Sync.SBX.ERP.POS.FormSinglePanel.pas">
+            <Form>FormSinglePanel</Form>
+        </DCCReference>
+        <DCCReference Include="Inheritance\Sync.SBX.ERP.POS.FormDynamicMenuPanel.pas">
+            <Form>FormDynamicMenuPanel</Form>
+        </DCCReference>
+        <DCCReference Include="Inheritance\Sync.SBX.ERP.POS.FormClientPanel.pas">
+            <Form>FormClientPanel</Form>
+        </DCCReference>
+        <DCCReference Include="Login\Sync.SBX.ERP.POS.FormLogin.pas">
+            <Form>FormLogin</Form>
+        </DCCReference>
+        <DCCReference Include="Sync.SBX.ERP.POS.FormDialogMessage.pas">
+            <Form>FormDialogMessage</Form>
+        </DCCReference>
+        <DCCReference Include="Sale\Sync.SBX.ERP.POS.FormSaleItemList.pas">
+            <Form>FormSaleItemList</Form>
+        </DCCReference>
+        <DCCReference Include="Inheritance\Sync.SBX.ERP.POS.FormNumericPad.pas">
+            <Form>FormNumericPad</Form>
+        </DCCReference>
+        <DCCReference Include="Sale\Sync.SBX.ERP.POS.FormSaleCapture.pas">
+            <Form>FormSaleCapture</Form>
+        </DCCReference>
+        <DCCReference Include="Sync.SBX.ERP.POS.FormDesignControl.pas">
+            <Form>FormDesignControl</Form>
+        </DCCReference>
+        <DCCReference Include="Customer\Sync.SBX.ERP.POS.FormCustomerQuickSearch.pas">
+            <Form>FormCustomerQuickSearch</Form>
+        </DCCReference>
+        <DCCReference Include="Customer\Sync.SBX.ERP.POS.FormCustomerSearchList.pas">
+            <Form>FormCustomerSearchList</Form>
+        </DCCReference>
+        <DCCReference Include="Customer\Sync.SBX.ERP.POS.FormCustomerMonitor.pas">
+            <Form>FormCustomerMonitor</Form>
+        </DCCReference>
+        <DCCReference Include="Item\Sync.SBX.ERP.POS.FormItemSearchList.pas">
+            <Form>FormItemSearchList</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormPicture.pas">
+            <Form>FormPicture</Form>
+        </DCCReference>
+        <DCCReference Include="Sale\Sync.SBX.ERP.POS.FormSaleItemMonitor.pas">
+            <Form>FormSaleItemMonitor</Form>
+        </DCCReference>
+        <DCCReference Include="Inheritance\Sync.SBX.ERP.POS.FormDialog.pas">
+            <Form>FormDialog</Form>
+        </DCCReference>
+        <DCCReference Include="Login\Sync.SBX.ERP.POS.FormFirstPassword.pas">
+            <Form>FormFirstPassword</Form>
+        </DCCReference>
+        <DCCReference Include="Salesman\Sync.SBX.ERP.POS.FormSalesmanQuickSearch.pas">
+            <Form>FormSalesmanQuickSearch</Form>
+        </DCCReference>
+        <DCCReference Include="Salesman\Sync.SBX.ERP.POS.FormSalesmanMonitor.pas">
+            <Form>FormSalesmanMonitor</Form>
+        </DCCReference>
+        <DCCReference Include="Salesman\Sync.SBX.ERP.POS.FormSalesmanList.pas">
+            <Form>FormSalesmanList</Form>
+        </DCCReference>
+        <DCCReference Include="Sync.SBX.ERP.POS.FormMenu.pas">
+            <Form>FormMenu</Form>
+        </DCCReference>
+        <DCCReference Include="Inheritance\Sync.SBX.ERP.POS.FormLists.pas">
+            <Form>FormLists</Form>
+        </DCCReference>
+        <DCCReference Include="Operations\Sync.SBX.ERP.POS.FormOpening.pas">
+            <Form>FormOpening</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridRinkTime.pas">
+            <Form>FormGridRinkTime</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridSoldItems.pas">
+            <Form>FormGridSoldItems</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridPaymentsReceived.pas">
+            <Form>FormGridPaymentsReceived</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridMovementsBySeller.pas">
+            <Form>FormGridMovementsBySeller</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridActivityByBox.pas">
+            <Form>FormGridActivityByBox</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridMovementsOfBox.pas">
+            <Form>FormGridMovementsOfBox</Form>
+        </DCCReference>
+        <DCCReference Include="Sale\Sync.SBX.ERP.POS.FormReturnSaleQuickSearch.pas">
+            <Form>FormReturnSaleQuickSearch</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormStoreList.pas">
+            <Form>FormStoreList</Form>
+        </DCCReference>
+        <DCCReference Include="Sale\Sync.SBX.ERP.POS.FormSaleShowItemList.pas">
+            <Form>FormSaleShowItemList</Form>
+        </DCCReference>
+        <DCCReference Include="Sale\Sync.SBX.ERP.POS.FormSaleShow.pas">
+            <Form>FormSaleShow</Form>
+        </DCCReference>
+        <DCCReference Include="Sync.SBX.ERP.POS.FormKeyBoard.pas">
+            <Form>FormKeyBoard</Form>
+        </DCCReference>
+        <DCCReference Include="Sale\Sync.SBX.ERP.POS.FormReturnSaleItemList.pas">
+            <Form>FormReturnSaleItemList</Form>
+        </DCCReference>
+        <DCCReference Include="Sale\Sync.SBX.ERP.POS.FormReturnSaleMonitor.pas">
+            <Form>FormReturnSaleMonitor</Form>
+        </DCCReference>
+        <DCCReference Include="Sale\Sync.SBX.ERP.POS.FormReturnSaleItemMonitor.pas">
+            <Form>FormReturnSaleItemMonitor</Form>
+        </DCCReference>
+        <DCCReference Include="Item\Sync.SBX.ERP.POS.FormItemOptionSearchList.pas">
+            <Form>FormItemOptionSearchList</Form>
+        </DCCReference>
+        <DCCReference Include="Item\Sync.SBX.ERP.POS.FormItemSerialList.pas">
+            <Form>FormItemSerialList</Form>
+        </DCCReference>
+        <DCCReference Include="Item\Sync.SBX.ERP.POS.FormItemBatchList.pas">
+            <Form>FormItemBatchList</Form>
+        </DCCReference>
+        <DCCReference Include="Customer\Sync.SBX.ERP.POS.FormCustomerEdition.pas">
+            <Form>FormCustomerEdition</Form>
+        </DCCReference>
+        <DCCReference Include="Layaway\Sync.SBX.ERP.POS.FormLayawayDeposit.pas">
+            <Form>FormLayawayDeposit</Form>
+        </DCCReference>
+        <DCCReference Include="Operations\Sync.SBX.ERP.POS.FormIncome.pas">
+            <Form>FormIncome</Form>
+        </DCCReference>
+        <DCCReference Include="Operations\Sync.SBX.ERP.POS.FormRetirement.pas">
+            <Form>FormRetirement</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormOperationOnHoldList.pas">
+            <Form>FormOperationOnHoldList</Form>
+        </DCCReference>
+        <DCCReference Include="Item\Sync.SBX.ERP.POS.FormManufacturerSearchList.pas">
+            <Form>FormManufacturerSearchList</Form>
+        </DCCReference>
+        <DCCReference Include="Prepaid\Sync.SBX.ERP.POS.FormPrepaidPhoneCapture.pas">
+            <Form>FormPrepaidPhoneCapture</Form>
+        </DCCReference>
+        <DCCReference Include="Prepaid\Sync.SBX.ERP.POS.FormPrepaidPhoneConfirmation.pas">
+            <Form>FormPrepaidPhoneConfirmation</Form>
+        </DCCReference>
+        <DCCReference Include="Prepaid\Sync.SBX.ERP.POS.FormPrepaidPhoneConfirmationBarcode.pas">
+            <Form>FormPrepaidPhoneConfirmationBarcode</Form>
+        </DCCReference>
+        <DCCReference Include="Prepaid\Sync.SBX.ERP.POS.FormPrepaidResult.pas">
+            <Form>FormPrepaidResult</Form>
+        </DCCReference>
+        <DCCReference Include="Prepaid\Sync.SBX.ERP.POS.FormPrepaidDepositReport.pas">
+            <Form>FormPrepaidDepositReport</Form>
+        </DCCReference>
+        <DCCReference Include="Prepaid\Sync.SBX.ERP.POS.FormPrepaidBarcodeAssign.pas">
+            <Form>FormPrepaidBarcodeAsign</Form>
+        </DCCReference>
+        <DCCReference Include="Operations\Sync.SBX.ERP.POS.FormPaymentsThirdParties.pas">
+            <Form>FormPaymentsThirdParties</Form>
+        </DCCReference>
+        <DCCReference Include="Prepaid\Sync.SBX.ERP.POS.FormPrepaidBarcodeAssignDone.pas">
+            <Form>FormPrepaidBarcodeAssignDone</Form>
+        </DCCReference>
+        <DCCReference Include="Prepaid\Sync.SBX.ERP.POS.FormPrepaidRefund.pas">
+            <Form>FormPrepaidRefund</Form>
+        </DCCReference>
+        <DCCReference Include="Layaway\Sync.SBX.ERP.POS.FormLayawayQuickSearch.pas">
+            <Form>FormLayawayQuickSearch</Form>
+        </DCCReference>
+        <DCCReference Include="Layaway\Sync.SBX.ERP.POS.FormLayawayShowItemList.pas">
+            <Form>FormLayawayShowItemList</Form>
+        </DCCReference>
+        <DCCReference Include="Layaway\Sync.SBX.ERP.POS.FormLayawayShow.pas">
+            <Form>FormLayawayShow</Form>
+        </DCCReference>
+        <DCCReference Include="Sale\Sync.SBX.ERP.POS.FormSaleOfferMonitor.pas">
+            <Form>FormSaleOfferMonitor</Form>
+        </DCCReference>
+        <DCCReference Include="Item\Sync.SBX.ERP.POS.FormItemIconSearch.pas">
+            <Form>FormItemIconSearch</Form>
+        </DCCReference>
+        <DCCReference Include="Item\Sync.SBX.ERP.POS.FormItemIconQuantity.pas">
+            <Form>FormItemIconQuantity</Form>
+        </DCCReference>
+        <DCCReference Include="Customer\Sync.SBX.ERP.POS.FormCustomerModalEdition.pas">
+            <Form>FormCustomerModalEdition</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridLayawayDocument.pas">
+            <Form>FormGridLayawayDocument</Form>
+        </DCCReference>
+        <DCCReference Include="Dispatch\Sync.SBX.ERP.POS.FormDispatchReceiptList.pas">
+            <Form>FormDispatchReceiptList</Form>
+        </DCCReference>
+        <DCCReference Include="Dispatch\Sync.SBX.ERP.POS.FormDispatchReceiptSelection.pas">
+            <Form>FormDispatchReceiptSelection</Form>
+        </DCCReference>
+        <DCCReference Include="Dispatch\Sync.SBX.ERP.POS.FormDispatchItemList.pas">
+            <Form>FormDispatchItemList</Form>
+        </DCCReference>
+        <DCCReference Include="Dispatch\Sync.SBX.ERP.POS.FormDispatchWeightCapture.pas">
+            <Form>FormDispatchWeightCapture</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridWeightRegister.pas">
+            <Form>FormGridWeightRegister</Form>
+        </DCCReference>
+        <DCCReference Include="Login\Sync.SBX.ERP.POS.FormAuthorization.pas">
+            <Form>FormAuthorization</Form>
+        </DCCReference>
+        <DCCReference Include="Sale\Sync.SBX.ERP.POS.FormSalePaymentReference.pas">
+            <Form>FormSalePaymentReference</Form>
+        </DCCReference>
+        <DCCReference Include="Item\Sync.SBX.ERP.POS.FormItemOptionMatrix.pas">
+            <Form>FormItemOptionMatrix</Form>
+        </DCCReference>
+        <DCCReference Include="Sale\Sync.SBX.ERP.POS.FormSaleGlobalDiscount.pas">
+            <Form>FormSaleGlobalDiscount</Form>
+        </DCCReference>
+        <DCCReference Include="Item\Sync.SBX.ERP.POS.FormItemOptionSelection.pas">
+            <Form>FormItemOptionSelection</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridCFDis.pas">
+            <Form>FormGridCFDis</Form>
+        </DCCReference>
+        <DCCReference Include="Item\Sync.SBX.ERP.POS.FormItemInventoryQuery.pas">
+            <Form>FormItemInventoryQuery</Form>
+        </DCCReference>
+        <DCCReference Include="PuntosNet\Sync.SBX.ERP.POS.FormPNBalanceQuery.pas">
+            <Form>FormBalanceQuery</Form>
+        </DCCReference>
+        <DCCReference Include="PuntosNet\Sync.SBX.ERP.POS.FormPNBalanceQueryInfo.pas">
+            <Form>FormBalanceQueryInfo</Form>
+        </DCCReference>
+        <DCCReference Include="PuntosNet\Sync.SBX.ERP.POS.FormPNGiftQuery.pas">
+            <Form>FormGiftQuery</Form>
+        </DCCReference>
+        <DCCReference Include="PuntosNet\Sync.SBX.ERP.POS.FormPNConfirmOperation.pas">
+            <Form>FormConfirmOperation</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridOffers.pas">
+            <Form>FormGridOffers</Form>
+        </DCCReference>
+        <DCCReference Include="Sale\Sync.SBX.ERP.POS.FormSaleOfferRowDetail.pas">
+            <Form>FormSaleOfferRowDetail</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormCheckPrices.pas">
+            <Form>FormCheckPrices</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormFlightPassengerData.pas">
+            <Form>FormFlightPassengerData</Form>
+        </DCCReference>
+        <DCCReference Include="Rink\Sync.SBX.ERP.POS.FormRinkExit.pas">
+            <Form>FormExitRink</Form>
+        </DCCReference>
+        <DCCReference Include="Rink\Sync.SBX.ERP.POS.FormRinkEntry.pas">
+            <Form>FormEntryRink</Form>
+        </DCCReference>
+        <DCCReference Include="Rink\Sync.SBX.ERP.POS.FormRinkReceptionItemList.pas">
+            <Form>FormRinkReceptionItemList</Form>
+        </DCCReference>
+        <DCCReference Include="Rink\Sync.SBX.ERP.POS.FormRinkReceptionItemCapture.pas">
+            <Form>FormRinkReceptionItemCapture</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridClients.pas">
+            <Form>FormGridClients</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridReceipts.pas">
+            <Form>FormGridReceipts</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridPuntosNetLog.pas">
+            <Form>FormGridPuntosNetLog</Form>
+        </DCCReference>
+        <DCCReference Include="PuntosNet\Sync.SBX.ERP.POS.FormPNReturnFolioTicketQuery.pas">
+            <Form>FormReturnFolioTicketQuery</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormCommentsMonitor.pas">
+            <Form>FormCommentsMonitor</Form>
+        </DCCReference>
+        <DCCReference Include="Item\Sync.SBX.ERP.POS.FormItemUnitList.pas">
+            <Form>FormItemUnitList</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormFolioQuery.pas">
+            <Form>FormFolioQuery</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormWeightInputDialog.pas">
+            <Form>FormWeightInputDialog</Form>
+        </DCCReference>
+        <DCCReference Include="Inheritance\Sync.SBX.ERP.POS.FormClientPanelEscape.pas">
+            <Form>FormClientPanelEscape</Form>
+        </DCCReference>
+        <DCCReference Include="Rink\Sync.SBX.ERP.POS.FormRinkTimeExcessDetail.pas">
+            <Form>FormRinkTimeExcessDetail</Form>
+        </DCCReference>
+        <DCCReference Include="Item\Sync.SBX.ERP.POS.FormItemSearchFilter.pas">
+            <Form>FormItemSearchFilter</Form>
+        </DCCReference>
+        <DCCReference Include="CouponPromotion\Sync.SBX.ERP.POS.FormCouponPromotionQuery.pas">
+            <Form>FormCouponPromotionQuery</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridStoreCredit.pas">
+            <Form>FormGridStoreCredit</Form>
+        </DCCReference>
+        <DCCReference Include="GiftCertificate\Sync.SBX.ERP.POS.FormGiftCertificateInputAmount.pas">
+            <Form>FormGiftCertificateInputAmount</Form>
+        </DCCReference>
+        <DCCReference Include="VirtualWallet\Sync.SBX.ERP.POS.FormVWIdCardInput.pas">
+            <Form>FormVWIdCardInput</Form>
+        </DCCReference>
+        <DCCReference Include="VirtualWallet\Sync.SBX.ERP.POS.FormVWBalanceQueryInfo.pas">
+            <Form>FormVWBalanceQueryInfo</Form>
+        </DCCReference>
+        <DCCReference Include="VirtualWallet\Sync.SBX.ERP.POS.FormVWAdjustment.pas">
+            <Form>FormVWAdjustment</Form>
+        </DCCReference>
+        <DCCReference Include="TimeClock\Sync.SBX.ERP.POS.FormTimeClock.pas">
+            <Form>FormTimeClock</Form>
+        </DCCReference>
+        <DCCReference Include="TimeClock\Sync.SBX.ERP.POS.FormTimeClockRegister.pas">
+            <Form>FormTimeClockRegister</Form>
+        </DCCReference>
+        <DCCReference Include="TimeClock\Sync.SBX.ERP.POS.FormTimeClockUserList.pas">
+            <Form>FormTimeClockUserList</Form>
+        </DCCReference>
+        <DCCReference Include="TimeClock\Sync.SBX.ERP.POS.FormTimeClockAuthorization.pas">
+            <Form>FormTimeClockAuthorization</Form>
+        </DCCReference>
+        <DCCReference Include="StockTransfer\Sync.SBX.ERP.POS.FormSTSendItemList.pas">
+            <Form>FormSTSendItemList</Form>
+        </DCCReference>
+        <DCCReference Include="StockTransfer\Sync.SBX.ERP.POS.FormSTSendCapture.pas">
+            <Form>FormSTSendCapture</Form>
+        </DCCReference>
+        <DCCReference Include="StockTransfer\Sync.SBX.ERP.POS.FormSTSendItemMonitor.pas">
+            <Form>FormSTSendItemMonitor</Form>
+        </DCCReference>
+        <DCCReference Include="StockTransfer\Sync.SBX.ERP.POS.FormSTReceiveQuickSearch.pas">
+            <Form>FormSTReceiveQuickSearch</Form>
+        </DCCReference>
+        <DCCReference Include="StockTransfer\Sync.SBX.ERP.POS.FormSTReceiveItemList.pas">
+            <Form>FormSTReceiveItemList</Form>
+        </DCCReference>
+        <DCCReference Include="StockTransfer\Sync.SBX.ERP.POS.FormSTReceiveCapture.pas">
+            <Form>FormSTReceiveCapture</Form>
+        </DCCReference>
+        <DCCReference Include="StockTransfer\Sync.SBX.ERP.POS.FormSTReceiveItemMonitor.pas">
+            <Form>FormSTReceiveItemMonitor</Form>
+        </DCCReference>
+        <DCCReference Include="StockTransfer\Sync.SBX.ERP.POS.FormSTReceiveSelecction.pas">
+            <Form>FormSTReceiveSelection</Form>
+        </DCCReference>
+        <DCCReference Include="VirtualWallet\Sync.SBX.ERP.POS.FormVWBalance.pas">
+            <Form>FormVWBalance</Form>
+        </DCCReference>
+        <DCCReference Include="GiftCertificate\Sync.SBX.ERP.POS.FormGiftCertificateInputCard.pas">
+            <Form>FormGiftCertificateInputCard</Form>
+        </DCCReference>
+        <DCCReference Include="Sync.SBX.ERP.POS.FormLicenseRequest.pas">
+            <Form>FormLicenseRequest</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridConfigurationGlobal.pas">
+            <Form>FormGridConfigurationGlobal</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridConfigurationStore.pas">
+            <Form>FormGridConfigurationStore</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridConfigurationWorkstation.pas">
+            <Form>FormGridConfigurationWorkstation</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridConfigurationUser.pas">
+            <Form>FormGridConfigurationUser</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridViewUpdates.pas">
+            <Form>FormGridViewUpdates</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridTimeClock.pas">
+            <Form>FormGridTimeClock</Form>
+        </DCCReference>
+        <DCCReference Include="Item\Sync.SBX.ERP.POS.FormItemKitWizard.pas">
+            <Form>FormItemKitWizard</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridTimeClockCloseOutPending.pas">
+            <Form>FormGridTimeClockCloseOutPending</Form>
+        </DCCReference>
+        <DCCReference Include="Operations\Sync.SBX.ERP.POS.FormCloseOutShow.pas">
+            <Form>FormCloseOutShow</Form>
+        </DCCReference>
+        <DCCReference Include="Operations\Sync.SBX.ERP.POS.FormCloseOutShowDetail.pas">
+            <Form>FormCloseOutShowDetail</Form>
+        </DCCReference>
+        <DCCReference Include="Operations\Sync.SBX.ERP.POS.FormCloseOutTenderTypeList.pas">
+            <Form>FormCloseOutTenderTypeList</Form>
+        </DCCReference>
+        <DCCReference Include="Operations\Sync.SBX.ERP.POS.FormCloseOutCapture.pas">
+            <Form>FormCloseOutCapture</Form>
+        </DCCReference>
+        <DCCReference Include="Operations\Sync.SBX.ERP.POS.FormCloseOutDenominationList.pas">
+            <Form>FormCloseOutDenominationList</Form>
+        </DCCReference>
+        <DCCReference Include="Operations\Sync.SBX.ERP.POS.FormCloseOutDenominationCapture.pas">
+            <Form>FormCloseOutDenominationCapture</Form>
+        </DCCReference>
+        <DCCReference Include="Inheritance\Sync.SBX.ERP.POS.FormIdCardInput.pas">
+            <Form>FormIdCardInput</Form>
+        </DCCReference>
+        <DCCReference Include="Cashless\Sync.SBX.ERP.POS.FormCashlessIdCardInputDialog.pas">
+            <Form>FormCashlessIdCardInputDialog</Form>
+        </DCCReference>
+        <DCCReference Include="Cashless\Sync.SBX.ERP.POS.FormCashlessCheckOut.pas">
+            <Form>FormCashlessCheckOut</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormOperationOnHoldLabelInput.pas">
+            <Form>FormOperationOnHoldLabelInput</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridOperationOnHold.pas">
+            <Form>FormGridOperationOnHold</Form>
+        </DCCReference>
+        <DCCReference Include="Operations\Sync.SBX.ERP.POS.FormCloseOutCommentsDialog.pas">
+            <Form>FormCloseOutCommentsDialog</Form>
+        </DCCReference>
+        <DCCReference Include="Operations\Sync.SBX.ERP.POS.FormMoneyTransfer.pas">
+            <Form>FormMoneyTransfer</Form>
+        </DCCReference>
+        <DCCReference Include="Sukarne\Sync.SBX.ERP.POS.FormItemBreakdownQuickSearch.pas">
+            <Form>FormItemBreakdownQuickSearch</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormToDoListDaily.pas">
+            <Form>FormToDoListDaily</Form>
+        </DCCReference>
+        <DCCReference Include="Item\Sync.SBX.ERP.POS.FormItemCustomPriceInput.pas">
+            <Form>FormItemCustomPriceInput</Form>
+        </DCCReference>
+        <DCCReference Include="CreditNotes\Sync.SBX.ERP.POS.FormMonitorCreditNotes.pas">
+            <Form>FormMonitorCreditNote</Form>
+        </DCCReference>
+        <DCCReference Include="CreditNotes\Sync.SBX.ERP.POS.FormCreditNotesIdCardInput.pas">
+            <Form>FormCreditNotesIdCardInput</Form>
+        </DCCReference>
+        <DCCReference Include="Operations\Sync.SBX.ERP.POS.FormCloseOutBankAccountInput.pas">
+            <Form>FormCloseOutBankAccountInput</Form>
+        </DCCReference>
+        <DCCReference Include="GiftCertificate\Sync.SBX.ERP.POS.FormGiftCertificateBalanceQueryInfo.pas">
+            <Form>FormGiftCertificateBalanceQueryInfo</Form>
+        </DCCReference>
+        <DCCReference Include="Item\Sync.SBX.ERP.POS.FormItemCustomsInfoList.pas">
+            <Form>FormItemCustomsInfoList</Form>
+        </DCCReference>
+        <DCCReference Include="Rink\Sync.SBX.ERP.POS.FormRinkDispatchItem.pas">
+            <Form>FormRinkDispatchItem</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridReceiptsToCFDi.pas">
+            <Form>FormGridReceiptsToCFDi</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridTPVTransactions.pas">
+            <Form>FormGridTPVTransactions</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormDocumentConceptList.pas">
+            <Form>FormDocumentConceptList</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridInventoryDocumentOrders.pas">
+            <Form>FormGridInventoryDocumentOrders</Form>
+        </DCCReference>
+        <DCCReference Include="Sync.SBX.ERP.POS.FormPopupMenu.pas">
+            <Form>FormPopupMenu</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridInventoryOnHand.pas">
+            <Form>FormGridInventoryOnHand</Form>
+        </DCCReference>
+        <DCCReference Include="Item\Sync.SBX.ERP.POS.FormItemFactorInput.pas">
+            <Form>FormItemFactorInput</Form>
+        </DCCReference>
+        <DCCReference Include="Sukarne\Sync.SBX.ERP.POS.FormItemBreakdownWeightInput.pas">
+            <Form>FormItemBreakdownWeightInput</Form>
+        </DCCReference>
+        <DCCReference Include="Sukarne\Sync.SBX.ERP.POS.FormItemBreakdown.pas">
+            <Form>FormItemBreakdown</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormDatesInputDialog.pas">
+            <Form>FormDatesInputDialog</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridReprintLabels.pas">
+            <Form>FormGridReprintLabels</Form>
+        </DCCReference>
+        <DCCReference Include="Item\Sync.SBX.ERP.POS.FormItemSerialBatchInput.pas">
+            <Form>FormItemSerialBatchInput</Form>
+        </DCCReference>
+        <DCCReference Include="Customer\Sync.SBX.ERP.POS.FormCustomerSubsidiarySelection.pas">
+            <Form>FormCustomerSubsidiarySelection</Form>
+        </DCCReference>
+        <DCCReference Include="Customer\Sync.SBX.ERP.POS.FormCustomerAddPerson.pas">
+            <Form>FormCustomerAddPerson</Form>
+        </DCCReference>
+        <DCCReference Include="Customer\Sync.SBX.ERP.POS.FormCustomerOnAccountPaymentInput.pas">
+            <Form>FormCustomerOnAccountPaymentInput</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridWithdrawals.pas">
+            <Form>FormGridWithdrawals</Form>
+        </DCCReference>
+        <DCCReference Include="Operations\Sync.SBX.ERP.POS.FormWithdrawal.pas">
+            <Form>FormWithdrawal</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormReasonsInputDialog.pas">
+            <Form>FormReasonsInputDialog</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridOnAccountPayment.pas">
+            <Form>FormGridOnAccountPayment</Form>
+        </DCCReference>
+        <DCCReference Include="Customer\Sync.SBX.ERP.POS.FormCustomerDPEnrollment.pas">
+            <Form>FormCustomerDPEnrollment</Form>
+        </DCCReference>
+        <DCCReference Include="Customer\Sync.SBX.ERP.POS.FormCustomerDPVerify.pas">
+            <Form>FormCustomerDPVerify</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormVerifyPriceLists.pas">
+            <Form>FormVerifyPriceLists</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridRegisterActivity.pas">
+            <Form>FormGridRegisterActivity</Form>
+        </DCCReference>
+        <DCCReference Include="Layaway\Sync.SBX.ERP.POS.FormLayawayOtherStoreSearch.pas">
+            <Form>FormLayawayOtherStoreSearch</Form>
+        </DCCReference>
+        <DCCReference Include="Layaway\Sync.SBX.ERP.POS.FormLayawayByCustomer.pas">
+            <Form>FormLayawayByCustomer</Form>
+        </DCCReference>
+        <DCCReference Include="CreditNotes\Sync.SBX.ERP.POS.FormCustomerCreditNotes.pas">
+            <Form>FormCustomerCreditNotes</Form>
+        </DCCReference>
+        <DCCReference Include="Layaway\Sync.SBX.ERP.POS.FormLayawayShowItemListCancel.pas">
+            <Form>FormLayawayShowItemListCancel</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormDateInputDialog.pas">
+            <Form>FormDateInputDialog</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormCommentsInputDialog.pas">
+            <Form>FormCommentsInputDialog</Form>
+        </DCCReference>
+        <DCCReference Include="Inheritance\Sync.SBX.ERP.POS.FormPayment.pas">
+            <Form>FormPayment</Form>
+        </DCCReference>
+        <DCCReference Include="Sale\Sync.SBX.ERP.POS.FormSalePaymentNew.pas">
+            <Form>FormSalePaymentNew</Form>
+        </DCCReference>
+        <DCCReference Include="Inheritance\Sync.SBX.ERP.POS.FormChangeMultiMoney.pas">
+            <Form>FormChangeMultiMoney</Form>
+        </DCCReference>
+        <DCCReference Include="Sale\Sync.SBX.ERP.POS.FormSalePaymentChangeMultiNew.pas">
+            <Form>FormSalePaymentChangeMultiNew</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormPaymentChange.pas">
+            <Form>FormPaymentChange</Form>
+        </DCCReference>
+        <DCCReference Include="Layaway\Sync.SBX.ERP.POS.FormLayawayPaymentNew.pas">
+            <Form>FormLayawayPaymentNew</Form>
+        </DCCReference>
+        <DCCReference Include="Layaway\Sync.SBX.ERP.POS.FormLayawayPaymentChangeMulti.pas">
+            <Form>FormLayawayPaymentChangeMulti</Form>
+        </DCCReference>
+        <DCCReference Include="Layaway\Sync.SBX.ERP.POS.FormLayawayPartialRetreatShowItemList.pas">
+            <Form>FormLayawayPartialRetreatShowItemList</Form>
+        </DCCReference>
+        <DCCReference Include="Layaway\Sync.SBX.ERP.POS.FormLayawayPartialRetreatItemMonitor.pas">
+            <Form>FormLayawayPartialRetreatItemMonitor</Form>
+        </DCCReference>
+        <DCCReference Include="Bonus\Sync.SBX.ERP.POS.FormBonusQuickSearch.pas">
+            <Form>FormBonusQuickSearch</Form>
+        </DCCReference>
+        <DCCReference Include="Bonus\Sync.SBX.ERP.POS.FormBonusItemListSelection.pas">
+            <Form>FormBonusItemListSelection</Form>
+        </DCCReference>
+        <DCCReference Include="Bonus\Sync.SBX.ERP.POS.FormBonusMonitor.pas">
+            <Form>FormBonusMonitor</Form>
+        </DCCReference>
+        <DCCReference Include="Bonus\Sync.SBX.ERP.POS.FormBonusItemMonitor.pas">
+            <Form>FormBonusItemMonitor</Form>
+        </DCCReference>
+        <DCCReference Include="Bonus\Sync.SBX.ERP.POS.FormBonusInputDialog.pas">
+            <Form>FormBonusInputDialog</Form>
+        </DCCReference>
+        <DCCReference Include="OnAccount\Sync.SBX.ERP.POS.FormOnAccountDetail.pas">
+            <Form>FormOnAccountDetail</Form>
+        </DCCReference>
+        <DCCReference Include="OnAccount\Sync.SBX.ERP.POS.FormOnAccountPayment.pas">
+            <Form>FormOnAccountPayment</Form>
+        </DCCReference>
+        <DCCReference Include="OnAccount\Sync.SBX.ERP.POS.FormOnAccountPaymentChangeMulti.pas">
+            <Form>FormOnAccountPaymentChangeMulti</Form>
+        </DCCReference>
+        <DCCReference Include="OnAccount\Sync.SBX.ERP.POS.FormOnAccountChargeInputDialog.pas">
+            <Form>FormOnAccountChargeInputDialog</Form>
+        </DCCReference>
+        <DCCReference Include="Item\Sync.SBX.ERP.POS.FormItemKitDetailList.pas">
+            <Form>FormItemKitDetailList</Form>
+        </DCCReference>
+        <DCCReference Include="Item\Sync.SBX.ERP.POS.FormItemAddDeniedSale.pas">
+            <Form>FormItemAddDeniedSale</Form>
+        </DCCReference>
+        <DCCReference Include="Salesman\Sync.SBX.ERP.POS.FormClerkStatisticsMonitor.pas">
+            <Form>FormClerkStatisticsMonitor</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormWarehouseList.pas">
+            <Form>FormWarehouseList</Form>
+        </DCCReference>
+        <DCCReference Include="Quote\Sync.SBX.ERP.POS.DataModule.Quote.pas">
+            <Form>DataModuleQuote</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Quote\Sync.SBX.ERP.POS.FormQuoteShow.pas">
+            <Form>FormQuoteShow</Form>
+        </DCCReference>
+        <DCCReference Include="Quote\Sync.SBX.ERP.POS.FormQuoteQuickSearch.pas">
+            <Form>FormQuoteQuickSearch</Form>
+        </DCCReference>
+        <DCCReference Include="Quote\Sync.SBX.ERP.POS.FormQuoteShowItemList.pas">
+            <Form>FormQuoteShowItemList</Form>
+        </DCCReference>
+        <DCCReference Include="Quote\Sync.SBX.ERP.POS.FormQuotePayment.pas">
+            <Form>FormQuotePayment</Form>
+        </DCCReference>
+        <DCCReference Include="Quote\Sync.SBX.ERP.POS.FormQuotesByCustomer.pas">
+            <Form>FormQuotesByCustomer</Form>
+        </DCCReference>
+        <DCCReference Include="Dispatch\Sync.SBX.ERP.POS.FormDispatchCombinationItemList.pas">
+            <Form>FormDispatchCombinationItemList</Form>
+        </DCCReference>
+        <DCCReference Include="Dispatch\Sync.SBX.ERP.POS.FormDispatchCombinationCapture.pas">
+            <Form>FormDispatchCombinationCapture</Form>
+        </DCCReference>
+        <DCCReference Include="Dispatch\Sync.SBX.ERP.POS.FormDispatchCombinationComponentList.pas">
+            <Form>FormDispatchCombinationComponentList</Form>
+        </DCCReference>
+        <DCCReference Include="OnAccount\Sync.SBX.ERP.POS.FormOnAccountPaymentConditionDialog.pas">
+            <Form>FormOnAccountPaymentConditionDialog</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormEmailInputDialog.pas">
+            <Form>FormEmailInputDialog</Form>
+        </DCCReference>
+        <DCCReference Include="Drugstore\Sync.SBX.ERP.POS.FormDrugstorePrescriptionModal.pas">
+            <Form>FormDrugstorePrescriptionModal</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridStoreCreditPayment.pas">
+            <Form>FormGridStoreCreditPayment</Form>
+        </DCCReference>
+        <DCCReference Include="Customer\Sync.SBX.ERP.POS.FormCustomerModalSelection.pas">
+            <Form>FormCustomerModalSelection</Form>
+        </DCCReference>
+        <DCCReference Include="OnAccount\Sync.SBX.ERP.POS.FormOnAccountPaymentActivityDialog.pas">
+            <Form>FormOnAccountPaymentActivityDialog</Form>
+        </DCCReference>
+        <DCCReference Include="Customer\Sync.SBX.ERP.POS.FormCustomerSimillary.pas">
+            <Form>FormCustomerSimillary</Form>
+        </DCCReference>
+        <DCCReference Include="Paperless\Sync.SBX.ERP.POS.FormPaperlessReturnInputDialog.pas">
+            <Form>FormPaperlessReturnInputDialog</Form>
+        </DCCReference>
+        <DCCReference Include="Item\Sync.SBX.ERP.POS.FormOfferCouponInputDialog.pas">
+            <Form>FormOfferCouponInputDialog</Form>
+        </DCCReference>
+        <DCCReference Include="CouponPromotion\Sync.SBX.ERP.POS.FormCustomerCoupons.pas">
+            <Form>FormCustomerCoupons</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormShowUnfinishedToDo.pas">
+            <Form>FormShowUnfinishedToDo</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormDocumentConceptInputDialog.pas">
+            <Form>FormDocumentConceptInputDialog</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridInventoryOnHandAdvance.pas">
+            <Form>FormGridInventoryOnHandAdvance</Form>
+        </DCCReference>
+        <DCCReference Include="VirtualWallet\Sync.SBX.ERP.POS.FormVWActivation.pas">
+            <Form>FormVWActivation</Form>
+        </DCCReference>
+        <DCCReference Include="SBXLocalServerMethodsClient.pas"/>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormVendorList.pas">
+            <Form>FormVendorList</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormInvoiceInputDialog.pas">
+            <Form>FormInvoiceInputDialog</Form>
+        </DCCReference>
+        <DCCReference Include="StockTransfer\Sync.SBX.ERP.POS.FormSTSendItemGlobalDiscount.pas">
+            <Form>FormSTSendItemGlobalDiscount</Form>
+        </DCCReference>
+        <DCCReference Include="Sync.SBX.ERP.POS.FormAbout.pas">
+            <Form>FormAbout</Form>
+        </DCCReference>
+        <DCCReference Include="Grids\Sync.SBX.ERP.POS.FormGridCFDisQueue.pas">
+            <Form>FormGridCFDisQueue</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormCFDiEditDialog.pas">
+            <Form>FormCFDiEditDialog</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormExtendedWarrantyInputDialog.pas">
+            <Form>FormExtendedWarrantyInputDialog</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormExtendedWarrantyInputQuery.pas">
+            <Form>FormExtendedWarrantyInputQuery</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormExtendedWarrantyShowInfo.pas">
+            <Form>FormExtendedWarrantyShowInfo</Form>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormStoreItemList.pas">
+            <Form>FormStoreItemList</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\common\Sync.Common.Colors.pas"/>
+        <DCCReference Include="SIP\Sync.SBX.ERP.POS.SIP.pas"/>
+        <DCCReference Include="Inheritance\Sync.SBX.ERP.POS.FormItemList.pas">
+            <Form>FormItemList</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="WarehouseTransfer\Sync.SBX.ERP.POS.FormWarehouseTransferItemList.pas">
+            <Form>FormWarehouseTransferItemList</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="WarehouseTransfer\Sync.SBX.ERP.POS.FormWarehouseTransferQuickSearch.pas">
+            <Form>FormWarehouseTransferQuickSearch</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="WarehouseTransfer\Sync.SBX.ERP.POS.FormWarehouseTransferMonitor.pas">
+            <Form>FormWarehouseTransferMonitor</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Generals\Sync.SBX.ERP.POS.FormIntegerInputDialog.pas">
+            <Form>FormIntegerInputDialog</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <BuildConfiguration Include="Release">
+            <Key>Cfg_2</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Base">
+            <Key>Base</Key>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Debug">
+            <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Delphi.Personality.12</Borland.Personality>
+        <Borland.ProjectType>Application</Borland.ProjectType>
+        <BorlandProject>
+            <Delphi.Personality>
+                <Source>
+                    <Source Name="MainSource">Sync.SBX.ERP.POS.dpr</Source>
+                </Source>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k250.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp250.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k250.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp250.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                </Excluded_Packages>
+            </Delphi.Personality>
+            <Deployment Version="3">
+                <DeployFile LocalName="Win32\Debug\Sync.SBX.ERP.POS.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>Sync_SBX_ERP_POS.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Win32\Release\Sync.SBX.ERP.POS.exe" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>Sync_SBX_ERP_POS.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployClass Name="AdditionalDebugSymbols">
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidClassesDexFile">
+                    <Platform Name="Android">
+                        <RemoteDir>classes</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidGDBServer">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidLibnativeArmeabiFile">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidLibnativeMipsFile">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\mips</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidLibnativeX86File"/>
+                <DeployClass Name="AndroidServiceOutput">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidSplashImageDef">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidSplashStyles">
+                    <Platform Name="Android">
+                        <RemoteDir>res\values</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_DefaultAppIcon">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon144">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xxhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon36">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-ldpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon48">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-mdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon72">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-hdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon96">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage426">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-small</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage470">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-normal</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage640">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-large</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage960">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xlarge</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="DebugSymbols">
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="DependencyFramework">
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.framework</Extensions>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Required="true" Name="DependencyPackage">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.bpl</Extensions>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="File">
+                    <Platform Name="Android">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\Resources\StartUp\</RemoteDir>
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Launch1024">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Launch1536">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Launch2048">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Launch768">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_Launch320">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_Launch640">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_Launch640x1136">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectAndroidManifest">
+                    <Platform Name="Android">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceDebug">
+                    <Platform Name="iOSDevice32">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceResourceRules">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSEntitlements">
+                    <Platform Name="iOSDevice32">
+                        <RemoteDir>..\</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSInfoPList">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSResource">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXEntitlements">
+                    <Platform Name="OSX32">
+                        <RemoteDir>..\</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXInfoPList">
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXResource">
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\Resources</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Required="true" Name="ProjectOutput">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Linux64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectUWPManifest">
+                    <Platform Name="Win32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win64">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="UWP_DelphiLogo150">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win64">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="UWP_DelphiLogo44">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win64">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="Linux64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
+            </Deployment>
+            <Platforms>
+                <Platform value="Win32">True</Platform>
+                <Platform value="Win64">False</Platform>
+            </Platforms>
+            <DataSnapProxyLookup>
+                <SBXLocalServerMethodsClient>{86EBF741-8125-47F5-AE1B-FC438533B1F1}</SBXLocalServerMethodsClient>
+            </DataSnapProxyLookup>
+            <ModelSupport>False</ModelSupport>
+        </BorlandProject>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+    <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
+    <Import Project="$(MSBuildProjectName).deployproj" Condition="Exists('$(MSBuildProjectName).deployproj')"/>
+</Project>
