@@ -106,7 +106,10 @@ func main() {
 	match := regEx.Match(commitFileContent)
 
 	if !match {
+		log.Println("Writing commit message file")
 		ioutil.WriteFile(fileMessage, []byte(commitMessage+" "+version), 0)
 	}
+
 	// os.Exit(42)
+
 }
