@@ -105,7 +105,7 @@ func main() {
 	regEx, _ := regexp.Compile("\\[" + versionPattern + "\\]")
 	match := regEx.Match(commitFileContent)
 
-	if !match {
+	if !match && version != "[v]" {
 		log.Println("Writing commit message file")
 		ioutil.WriteFile(fileMessage, []byte(commitMessage+" "+version), 0)
 	}
