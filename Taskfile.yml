@@ -80,6 +80,17 @@ tasks:
         - git add ./
         - git commit -m "Test commit"
         - git reset HEAD~1 --hard
+  run-version-info:
+      desc: Test with versionInfo in real git environment
+      cmds:
+        - git add ./
+        - cmd: git commit -m "Auto commit to avoid lost changes"
+          ignore_error: true
+        - task: build-n-copy-in-local
+        - cp -rf fixtures/versioninfo.json ./versioninfo.json
+        - git add ./
+        - git commit -m "Test commit"
+        - git reset HEAD~1 --hard
   test-embarcadero:
     desc: Build and test embarcadero
     cmds:
@@ -107,3 +118,12 @@ tasks:
       - '{{.COMPLETE_EXE}} .git/COMMIT_EDITMSG'
       - cat .git/COMMIT_EDITMSG
       - rm -Rf ./package.json
+  test-version-info:
+    desc: Build and test versionInfo
+    cmds:
+      - cp -rf fixtures/versioninfo.json ./versioninfo.json
+      - task: build
+      - echo $'First commit\n' > .git/COMMIT_EDITMSG
+      - '{{.COMPLETE_EXE}} .git/COMMIT_EDITMSG'
+      - cat .git/COMMIT_EDITMSG
+      - rm -Rf ./versioninfo.json

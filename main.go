@@ -97,6 +97,32 @@ func main() {
 		version = strings.ReplaceAll(matchVersionPackage[0], "\"version\": \"", "")
 		version = strings.ReplaceAll(version, "\"", "")
 	}
+
+	versionInfo := "versioninfo.json"
+	matchVersionInfo, err := filepath.Glob(versionInfo)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	// log.Println(matchVersionInfo)
+	if len(matchVersionInfo) > 0 {
+		versionInfoFilePath := matchVersionInfo[0]
+		versionInfoFileContent, err := ioutil.ReadFile(versionInfoFilePath)
+		if err != nil {
+			log.Fatalln(err)
+		}
+		versionInfoFile := strings.TrimSpace(string(versionInfoFileContent))
+		reVersionInfo, _ :=
+			regexp.Compile("\"ProductVersion\": \"v[0-9]{1,}.[0-9]{1,}.[0-9]{1,}(.[0-9]{1,}|)\"")
+		matchVersionInfo := reVersionInfo.FindStringSubmatch(versionInfoFile)
+		// log.Print(matchVersionInfo)
+		if len(matchVersionInfo) == 0 {
+			log.Fatal("Not found product version in file " + versionInfoFilePath)
+		}
+
+		version = strings.ReplaceAll(matchVersionInfo[0], "\"ProductVersion\": \"v", "")
+		version = strings.ReplaceAll(version, "\"", "")
+	}
+
 	versionPattern := "v" + version
 	version = "[" + versionPattern + "]"
 
