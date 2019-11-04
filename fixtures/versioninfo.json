@@ -1,0 +1,37 @@
+{
+  "FixedFileInfo": {
+      "FileVersion": {
+          "Major": 0,
+          "Minor": 1,
+          "Patch": 32,
+          "Build": 6
+      },
+      "FileFlagsMask": "3f",
+      "FileFlags ": "00",
+      "FileOS": "040004",
+      "FileType": "01",
+      "FileSubType": "00"
+  },
+  "StringFileInfo": {
+      "Comments": "Created by SBX Development Team\nElbert Castañeda<elbert.castaneda@gmail.com>",
+      "CompanyName": "SBX Retail",
+      "FileDescription": "Servicio encargado de cuidar (Siempre estén iniciados) otros servicios",
+      "InternalName": "sbx-guardian",
+      "LegalCopyright": "",
+      "LegalTrademarks": "",
+      "OriginalFilename": "sbx-guardian.exe",
+      "PrivateBuild": "",
+      "ProductName": "SBX Guardian",
+      "ProductVersion": "v0.1.32.6",
+      "FileName": "v0.1.32.6",
+      "SpecialBuild": ""
+  },
+  "VarFileInfo": {
+      "Translation": {
+          "LangID": "0409",
+          "CharsetID": "04B0"
+      }
+  },
+  "IconPath": "resource/icon.ico",
+  "ManifestPath": "resource/sbx-guardian.exe.manifest"
+}
