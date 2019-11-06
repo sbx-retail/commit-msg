@@ -112,14 +112,14 @@ func main() {
 		}
 		versionInfoFile := strings.TrimSpace(string(versionInfoFileContent))
 		reVersionInfo, _ :=
-			regexp.Compile("\"ProductVersion\": \"v[0-9]{1,}.[0-9]{1,}.[0-9]{1,}(.[0-9]{1,}|)\"")
+			regexp.Compile("\"ProductVersion\": \"[0-9]{1,}.[0-9]{1,}.[0-9]{1,}(.[0-9]{1,}|)\"")
 		matchVersionInfo := reVersionInfo.FindStringSubmatch(versionInfoFile)
 		// log.Print(matchVersionInfo)
 		if len(matchVersionInfo) == 0 {
 			log.Fatal("Not found product version in file " + versionInfoFilePath)
 		}
 
-		version = strings.ReplaceAll(matchVersionInfo[0], "\"ProductVersion\": \"v", "")
+		version = strings.ReplaceAll(matchVersionInfo[0], "\"ProductVersion\": \"", "")
 		version = strings.ReplaceAll(version, "\"", "")
 	}
 
